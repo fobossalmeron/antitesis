@@ -16,8 +16,8 @@ export default ({ children, title = "Antitesis", changeTheme }) => {
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
-    document.getElementById('PageWrapper').scrollTop = 0;
-  });
+    document.getElementById("PageWrapper").scrollTop = 0;
+  }, [children]);
 
   const toggleNav = () => {
     setOpen(!isOpen);
@@ -196,9 +196,9 @@ const Social = styled.div`
     &:hover {
       *:not(.plasta) {
         fill: ${props =>
-        props.isOpen
-          ? props.theme.colors.foreground
-          : props.theme.colors.background};
+          props.isOpen
+            ? props.theme.colors.foreground
+            : props.theme.colors.background};
       }
       .plasta {
         opacity: 1;

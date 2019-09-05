@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import Slide from "react-reveal/Slide";
 import Head from "next/head";
+import {useEffect} from "react";
 
 
-export default function Renta() {
+
+export default function Renta(props) {
+  useEffect(() => {
+      props.complete();
+  },[]);
   return (
     <RentaWrapper>
           <Head>

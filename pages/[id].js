@@ -9,9 +9,13 @@ import { proyects } from "../portafolio/proyects.json";
 import React, { useState, useEffect } from "react";
 import VideoPlayer from "../components/videoPlayer";
 
-const Post = ({ queryId }) => {
+const Post = ({ queryId, complete }) => {
   const router = useRouter();
   const proyect = proyects[`${queryId}`];
+
+  useEffect(() => {
+      complete();
+  },[]);
 
   function set(x) {
     return { __html: x };

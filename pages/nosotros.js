@@ -2,8 +2,12 @@ import styled from "styled-components";
 import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
 import Head from "next/head";
+import {useEffect} from "react";
 
-export default function Nosotros() {
+export default function Nosotros(props) {
+  useEffect(() => {
+      props.complete();
+  },[]);
   return (
     <NosotrosWrapper>
           <Head>

@@ -7,6 +7,7 @@ import {
   GoogleMap,
   Marker
 } from "react-google-maps";
+import { useEffect } from "react";
 
 const MyMapComponent = withScriptjs(
   withGoogleMap(props => (
@@ -19,7 +20,11 @@ const MyMapComponent = withScriptjs(
   ))
 );
 
-export default function Contacto() {
+export default function Contacto(props) {
+  useEffect(() => {
+      props.complete();
+  },[]);
+
   return (
     <ContactoWrapper>
       <Head>

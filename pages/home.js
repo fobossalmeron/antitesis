@@ -85,9 +85,13 @@ const MouseFollow = props => {
   );
 };
 
-export default function Index() {
+export default function Index(props) {
   const [counter, setCounter] = useState(1);
   const positioning = useRef(null);
+
+  useEffect(() => {
+      props.complete();
+  },[]);
 
   const reset = debounce(
     () => {
