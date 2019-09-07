@@ -1,13 +1,11 @@
 # Antitesis Films Web App
 
 - Restrict Maps API calls
-- catch errors  on  other  page loads outside scope
 - Revisar imágenes: about muy pequeña, Jean la barra que pedo? revisar si pueden hacer los videos más ligeros
-- load animation
-- custom map
-- loader bar
-- mouse animation
+- contenedor puede ser el mismo para todas las  páginas (menos home?)
+- true loading bars
 - responsive
+- video de inicio
 
 
 

@@ -12,7 +12,7 @@ import Vm from "../static/assets/img/social/vm.svg";
 
 import { useEffect, useState } from "react";
 
-export default ({ children, title = "Antitesis", changeTheme }) => {
+export default ({ children, title = "Antitesis", changeTheme, visible }) => {
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export default ({ children, title = "Antitesis", changeTheme }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Styles />
-      <PageWrapper id="PageWrapper">
+      <PageWrapper id="PageWrapper" visible={visible}>
         <Header
           hidden={hideForLanding}
           toggleNav={toggleNav}
@@ -115,6 +115,8 @@ export default ({ children, title = "Antitesis", changeTheme }) => {
 };
 
 const PageWrapper = styled.div`
+  opacity: ${props => (props.visible ? 1 : 0)};
+  transition: opacity 0.3s ease;
   width: 100%;
   padding: 180px 4% 0 4%;
   height: 100%;
@@ -141,6 +143,7 @@ const ModeToggler = styled.div`
   z-index: 10;
   svg {
     width: 100%;
+    max-width:108px;
     path {
       fill: ${props =>
         props.isOpen
@@ -175,8 +178,8 @@ const Social = styled.div`
     text-decoration: none;
   }
   svg {
-    width: 32px;
-    height: 32px;
+    width: 25px;
+    height: 25px;
     margin-right: 10px;
     * {
       fill: ${props =>
@@ -215,7 +218,10 @@ const Date = styled.div`
 `;
 
 const Styles = createGlobalStyle`
-      body {
-        color: ${props => props.theme.colors.foreground};
-      }
+  html{
+    background-color: ${props => props.theme.colors.foreground};
+  }
+  body {
+    color: ${props => props.theme.colors.foreground};
+  }
 `;

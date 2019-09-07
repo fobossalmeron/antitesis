@@ -4,24 +4,26 @@ import { useEffect } from "react";
 
 export default function Header(props) {
   return (
-    <TopHeader hidden={props.hidden}>
-      <Link href="/home">
-        <Logotype>ANTÍTESIS FILMS</Logotype>
-      </Link>
-      <Desc>CASA PRODUCTORA EN LA CIUDAD DE MÉXICO</Desc>
-      <NavList>
-        <Link href="/nosotros" prefetch={true}>
-          <a>Nosotros</a>
+    <>
+      <TopHeader hidden={props.hidden} isOpen={props.isOpen}>
+        <Link href="/home">
+          <Logotype>ANTÍTESIS FILMS</Logotype>
         </Link>
-        <Link href="/renta" prefetch={true}>
-          <a>Renta</a>
-        </Link>
-        <Link href="/contacto" prefetch={true}>
-          <a>Contacto</a>
-        </Link>
-      </NavList>
+        <Desc>CASA PRODUCTORA EN LA CIUDAD DE MÉXICO</Desc>
+        <NavList>
+          <Link href="/nosotros" prefetch={true}>
+            <a>Nosotros</a>
+          </Link>
+          <Link href="/renta" prefetch={true}>
+            <a>Renta</a>
+          </Link>
+          <Link href="/contacto" prefetch={true}>
+            <a>Contacto</a>
+          </Link>
+        </NavList>
+      </TopHeader>
       <NavTriggerMobile onClick={() => props.toggleNav()} open={props.isOpen} />
-    </TopHeader>
+    </>
   );
 }
 
@@ -30,9 +32,12 @@ const NavTriggerMobile = styled.div`
   height: 30px;
   max-width: 50px;
   width: 100%;
-  position: relative;
   justify-self: flex-end;
   margin-top: 3px;
+  position: absolute;
+  right: 4%;
+  top: 2%;
+  z-index: 13;
   &:before,
   &:after {
     content: " ";
@@ -69,9 +74,12 @@ const TopHeader = styled.header`
   width: 100%;
   top: 0;
   left: 0;
-  padding: 2% 4% 0 4%;
-  z-index: 12;
+  padding: 2% 4% 2% 4%;
+  z-index: 8;
   color: ${props => props.theme.colors.foreground};
+  background-color: ${props =>
+    props.isOpen ? "none" : props.theme.colors.background};
+
   @media (max-width: 900px) {
     grid-template-columns: repeat(6, 1fr);
   }

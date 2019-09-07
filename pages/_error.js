@@ -1,30 +1,43 @@
+import React from "react";
+import Head from "next/head";
 import styled from "styled-components";
 import Slide from "react-reveal/Slide";
-import Head from "next/head";
 
+const Error = props => {
+  const serverError = (code) => (
+      <>
+    <Head>
+    <title>
+      Antítesis Films | {code}
+    </title>
+  </Head>
+    <ErrorWrapper>
+    <Slide bottom cascade>
 
-export default function Renta() {
-  return (
-    <RentaWrapper>
-          <Head>
-        <title>Antítesis Films | Renta</title>
-      </Head>
-      <Slide bottom cascade>
-        <h2>Renta</h2>
+      <h2>{code}</h2>
       </Slide>
       <Slide bottom>
-        <h3>Equipo</h3>
-        <p>
-          Contamos con equipo de cámara y de producción a disposición para tus
-          proyectos.
-        </p>
-        <h4><a href="../static/assets/pdf/Antitesis_renta.pdf">Ver PDF</a></h4>
-      </Slide>
-    </RentaWrapper>
-  );
-}
 
-const RentaWrapper = styled.div`
+      <p>La página no fue encontrada</p>
+      </Slide>
+    </ErrorWrapper>
+    </>
+  );
+  const error = props.statusCode
+    ? serverError(props.statusCode)
+    : "An error occurred on client";
+  return error;
+};
+
+Error.getInitialProps = ({ res, err }) => {
+  const statusCode = res ? res.statusCode : err ? err.statusCode : null;
+  return { statusCode };
+};
+
+export default Error;
+
+
+const ErrorWrapper = styled.div`
   display: grid;
   box-sizing: border-box;
   position: relative;

@@ -5,30 +5,79 @@ import LoadingBar from "react-top-loading-bar";
 import Layout from "../components/layout";
 import theme from "../styles/theme";
 import darkTheme from "../styles/dark";
+import Router from "next/router";
+import debounce from "lodash/debounce";
 
 export default class MyApp extends App {
   constructor(props) {
     super(props);
     this.state = {
-      isDarkMode: false
+      isDarkMode: false,
+      hasLoaded: false,
+      showBar: false
     };
   }
-  // La barra es falsa, estos métodos son inútiles
 
-  // componentDidMount() {
-  //   this.LoadingBar.continuousStart();
-  // }
+  //ShouldComponentUpdate sale igual, /nosotros  /nosotros
+  authenticate() {
+    return new Promise(resolve => setTimeout(resolve, 1500)); //1500
+  }
 
-  // startBar() {
-  //   this.LoadingBar.continuousStart();
-  // }
+  componentDidUpdate() {
+    console.log("updated");
+  }
 
-  complete() {
+  handleRouteComplete = url => {
+    this.LoadingBar.complete();
+    console.log("complete\n\n");
+  };
+
+  handleRouteStart = url => {
     this.LoadingBar.continuousStart();
-    var myself = this
-    setTimeout(function() {
-      myself.LoadingBar.complete();
-    }, 500);
+    console.log("start");
+  };
+
+  handleRouteError = (err, url) => {
+    if (err.cancelled) {
+      console.log(`Route to ${url} was cancelled!`);
+    }
+    this.LoadingBar.complete();
+    console.log("complete Error\n\n" + err);
+  };
+
+  componentDidMount() {
+    this.authenticate().then(() => {
+      const loader = document.getElementById("outsideLoader");
+      const revealer = document.getElementById("revealer");
+      if (loader) {
+        this.setState({ hasLoaded: true });
+        setTimeout(() => {
+          // transition out
+          revealer.style.transform = "translateY(-100%)";
+
+          loader.style.opacity = "0";
+
+
+          setTimeout(() => {
+            // remove from DOM
+            loader.remove();
+            revealer.remove();
+          }, 500);
+        }, 500);
+      }
+    });
+
+    console.log("did mount");
+    // Router.events.on("routeChangeStart", this.handleRouteStart);
+    Router.events.on("routeChangeComplete", this.handleRouteComplete);
+    Router.events.on("routeChangeError", this.handleRouteError);
+  }
+
+  componentWillUnmount() {
+    console.log("will unmount");
+    Router.events.off("routeChangeStart", this.handleRouteStart);
+    Router.events.off("routeChangeComplete", this.handleRouteComplete);
+    Router.events.off("routeChangeError", this.handleRouteError);
   }
 
   // Esto solo vale la pena si vamos a implementar más cookies,
@@ -57,14 +106,6 @@ export default class MyApp extends App {
   // Y la función change theme debe incluír:
   // localStorage.setItem("isDarkMode", !this.state.isDarkMode);
 
-  // static async getInitialProps({ Component, router, ctx }) {
-  //   let pageProps = {};
-
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx);
-  //   }
-  //   return { pageProps };
-  // }
 
   changeTheme() {
     this.setState({
@@ -79,13 +120,18 @@ export default class MyApp extends App {
         <ThemeProvider theme={this.state.isDarkMode ? darkTheme : theme}>
           <Layout
             changeTheme={this.changeTheme.bind(this)}
+            visible={this.state.hasLoaded}
           >
             <LoadingBar
               onRef={ref => (this.LoadingBar = ref)}
               height={8}
-              color={this.state.isDarkMode ? darkTheme.colors.foreground : theme.colors.foreground}
+              color={
+                this.state.isDarkMode
+                  ? darkTheme.colors.foreground
+                  : theme.colors.foreground
+              }
             />
-            <Component {...pageProps} complete={this.complete.bind(this)} />
+            <Component {...pageProps} />
           </Layout>
         </ThemeProvider>
       </Container>

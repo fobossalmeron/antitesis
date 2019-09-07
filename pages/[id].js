@@ -5,17 +5,21 @@ import Link from "next/link";
 import Router from "next/router";
 import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
+import ErrorPage from './_error';
+
 import { proyects } from "../portafolio/proyects.json";
 import React, { useState, useEffect } from "react";
 import VideoPlayer from "../components/videoPlayer";
 
-const Post = ({ queryId, complete }) => {
+const Post = ({ queryId, proyect, complete }) => {
   const router = useRouter();
-  const proyect = proyects[`${queryId}`];
+  // const proyect = proyects[`${queryId}`];
 
-  useEffect(() => {
-      complete();
-  },[]);
+  //  if (proyect == undefined) {
+  //   const error = new Error();
+  //   error.statusCode = 404;
+  //   throw error;
+  //  }
 
   function set(x) {
     return { __html: x };
@@ -57,6 +61,9 @@ const Post = ({ queryId, complete }) => {
       );
     }
   });
+  if (proyect === "error"){
+    return <ErrorPage statusCode={404} title={"404"}/>
+  }
   return (
     <ProyectWrapper key={"player" + proyect + Math.random()}>
       <Head>
@@ -86,7 +93,11 @@ const Post = ({ queryId, complete }) => {
 };
 
 Post.getInitialProps = async ({ query }) => {
-  return { queryId: query.id };
+  let proyect = proyects[`${query.id}`];
+   if (proyect == undefined) {
+    proyect = "error"
+   }
+  return { proyect };
 };
 
 export default Post;

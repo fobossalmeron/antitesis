@@ -4,10 +4,7 @@ import Fade from "react-reveal/Fade";
 import Head from "next/head";
 import {useEffect} from "react";
 
-export default function Nosotros(props) {
-  useEffect(() => {
-      props.complete();
-  },[]);
+export default function Nosotros() {
   return (
     <NosotrosWrapper>
           <Head>

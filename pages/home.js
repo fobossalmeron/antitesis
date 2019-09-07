@@ -48,6 +48,10 @@ const MouseFollow = props => {
     threshold: 1,
     rootMargin: "0px"
   });
+  const [pos, setPos] = useState({
+    x: 600,
+    y: 230
+  });
 
   const _p = Object.entries(proyects);
 
@@ -55,20 +59,41 @@ const MouseFollow = props => {
     setVisible(false);
     setVideo(_p[props.counter][1].clip);
     setTimeout(() => setVisible(true), 200);
-    console.log(isVisible);
+    // console.log(isVisible);
   }, [props.counter]);
+
+  useEffect(() => {
+    if(!props.isPositionOutside){
+        setPos(props.position)
+    }
+      // console.log(pos)
+  }, [props.position]);
+
+  // const position = () => {
+  //   if (position.y + 100 >) {
+  //     var style = {
+  //       top: `${props.position.y + 100}px`,
+  //       left: `${props.position.x + 250}px`
+  //     };
+  //   }else{
+  //     var style = {
+  //       top: `${ref2.current.position.y + 100}px`,
+  //       left: `${ref2.current.position.x + 250}px`
+  //     };
+  //   }
+  //   return style
+  // };
 
   return (
     <Video
-      style={{
-        top: `${props.position.y + 100}px`,
-        left: `${props.position.x + 250}px`
+      style={ {
+        top: `${pos.y + 150}px`,
+        left: `${pos.x + 150}px`
       }}
       ref={ref2}
     >
-      <Fade
-        when={isVisible}
-      >
+      {/* {console.log(props.isPositionOutside)} */}
+      <Fade when={isVisible}>
         <FilePlayer
           url={`../static/assets/video/${video}`}
           muted={true}
@@ -88,10 +113,6 @@ const MouseFollow = props => {
 export default function Index(props) {
   const [counter, setCounter] = useState(1);
   const positioning = useRef(null);
-
-  useEffect(() => {
-      props.complete();
-  },[]);
 
   const reset = debounce(
     () => {
@@ -131,10 +152,10 @@ export default function Index(props) {
         <title>Antitesis Films</title>
       </Head>
       <ReactCursorPosition
-        style={{ gridColumn: "4 / span 6" }}
+        style={{ gridColumn: "4 / span 6", width:"100%" }}
         ref={positioning}
       >
-        {slides}
+              {slides}
         <MouseFollow counter={counter} />
       </ReactCursorPosition>
       <Counter>
@@ -145,10 +166,15 @@ export default function Index(props) {
 }
 
 const Counter = styled.div`
-  font-size: 1.32rem;
-  position: fixed;
-  bottom: 4%;
-  left: 27%;
+    font-size: 1.32rem;
+    position: fixed;
+    padding-bottom: 2%;
+    padding-top:1%;
+    padding-left: 27%;
+    bottom: 0;
+    left: 0;
+    background-color: ${props => props.theme.colors.background};
+    width: 100%;
 `;
 
 const Proyect = styled.section`
@@ -227,14 +253,14 @@ const Video = styled.div`
     width: 100%;
     height: 100%;
     margin: 0;
-    height:0;
+    height: 0;
     padding-bottom: 56.2%;
-    video{
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:auto;
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
     }
   }
   @media (max-width: 900px) {
