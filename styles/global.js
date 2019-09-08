@@ -13,16 +13,20 @@ let theStyles = `
     transition: all .4s ease-in;
   }
   #outsideLoader {
-    width: 100px;
+    width: 40%;
+    max-width:300px;
     position: absolute;
-    top: calc(50% - 50px);
-    left: calc(50% - 50px);
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
     fill: white;
     z-index: 100;
-    transform: rotate(-180deg);
-    transform-origin: 50% 50%;
-    animation: rotate 1.2s ease-in-out infinite;
     transition: opacity .3s ease; 
+  }
+  #spin{
+    animation: rotate 1.2s ease-in-out infinite;
+    transform-origin: 50% 40.2%;
+    transform: rotate(-180deg);
   }
 
   @keyframes rotate {
@@ -49,12 +53,12 @@ let theStyles = `
   @media screen and (max-width: 1330px) {
     html{font-size:14px};
   }
-  @media screen and (max-width: 1000px) {
-    html{font-size:12px};
-  }
-  @media screen and (max-width: 700px) {
-    html{font-size:10px};
-  }
+  // @media screen and (max-width: 700px) {
+  //   html{font-size:12px};
+  // }
+  // @media screen and (max-width: 550px) {
+  //     html{font-size:10px};
+  //   }
 
   *,
   *:before,
@@ -89,7 +93,7 @@ let theStyles = `
 
   h2 {
     margin:15% 0 0 0;
-    overflow:hidden;
+    overflow-y:hidden;
   }
 
   h2 + h2 {
@@ -101,7 +105,7 @@ let theStyles = `
     font-weight: 100;
     font-size: 3.2rem;
     margin-top: 20px;
-    overflow:hidden;
+    overflow-y:hidden;
   }
 
   p {
@@ -114,7 +118,7 @@ let theStyles = `
   h4 {
     font-size: 1.32rem;
     letter-spacing: 1px;
-    overflow:hidden;
+    // overflow:hidden;
   }
 
   /* normalize */
@@ -122,7 +126,7 @@ let theStyles = `
 
 `;
 
-function createMarkup() { return {__html: theStyles}; };
-export default () => (
-  <style dangerouslySetInnerHTML={createMarkup()}/>
-);
+function createMarkup() {
+  return { __html: theStyles };
+}
+export default () => <style dangerouslySetInnerHTML={createMarkup()} />;

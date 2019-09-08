@@ -6,7 +6,6 @@ import Layout from "../components/layout";
 import theme from "../styles/theme";
 import darkTheme from "../styles/dark";
 import Router from "next/router";
-import debounce from "lodash/debounce";
 
 export default class MyApp extends App {
   constructor(props) {
@@ -20,7 +19,7 @@ export default class MyApp extends App {
 
   //ShouldComponentUpdate sale igual, /nosotros  /nosotros
   authenticate() {
-    return new Promise(resolve => setTimeout(resolve, 1500)); //1500
+    return new Promise(resolve => setTimeout(resolve, 0)); //1500
   }
 
   componentDidUpdate() {
@@ -54,9 +53,7 @@ export default class MyApp extends App {
         setTimeout(() => {
           // transition out
           revealer.style.transform = "translateY(-100%)";
-
           loader.style.opacity = "0";
-
 
           setTimeout(() => {
             // remove from DOM

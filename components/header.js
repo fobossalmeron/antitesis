@@ -1,25 +1,32 @@
 import Link from "next/link";
-import styled from "styled-components";
-import { useEffect } from "react";
+import styled, { css } from "styled-components";
+import ActiveLink from "./activeLink";
 
 export default function Header(props) {
   return (
     <>
       <TopHeader hidden={props.hidden} isOpen={props.isOpen}>
         <Link href="/home">
-          <Logotype>ANTÍTESIS FILMS</Logotype>
+          <Logotype>
+            ANTÍTESIS
+            <br /> FILMS
+          </Logotype>
         </Link>
-        <Desc>CASA PRODUCTORA EN LA CIUDAD DE MÉXICO</Desc>
+        <Desc>
+          CASA PRODUCTORA
+          <br /> EN LA CIUDAD
+          <br /> DE MÉXICO
+        </Desc>
         <NavList>
-          <Link href="/nosotros" prefetch={true}>
-            <a>Nosotros</a>
-          </Link>
-          <Link href="/renta" prefetch={true}>
-            <a>Renta</a>
-          </Link>
-          <Link href="/contacto" prefetch={true}>
-            <a>Contacto</a>
-          </Link>
+          <ActiveLink href="/nosotros">
+            <NavLink>Nosotros</NavLink>
+          </ActiveLink>
+          <ActiveLink href="/renta">
+            <NavLink>Renta</NavLink>
+          </ActiveLink>
+          <ActiveLink href="/contacto">
+            <NavLink>Contacto</NavLink>
+          </ActiveLink>
         </NavList>
       </TopHeader>
       <NavTriggerMobile onClick={() => props.toggleNav()} open={props.isOpen} />
@@ -33,35 +40,61 @@ const NavTriggerMobile = styled.div`
   max-width: 50px;
   width: 100%;
   justify-self: flex-end;
-  margin-top: 3px;
-  position: absolute;
-  right: 4%;
-  top: 2%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin-top: calc(2% + 4px);
+  margin-right: 4%;
   z-index: 13;
   &:before,
   &:after {
     content: " ";
-    height: 4px;
+    height: 3px;
     width: 100%;
     background-color: ${props =>
       props.open
         ? props.theme.colors.background
         : props.theme.colors.foreground};
     position: absolute;
-    left: 0px;
+    right: 0px;
     top: 0px;
   }
   &:after {
     top: 19px;
   }
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     display: flex;
-    grid-column: 12 / span 1;
   }
-  @media (max-width: 900px) {
-    display: flex;
-    grid-column: 6 / span 1;
+  @media (max-width: 960px) {
+    margin-top: 24px;
+    margin-right: 5%;
   }
+  @media (max-width: 700px) {
+    &:before,
+    &:after {
+      height: 2px;
+      max-width:40px;
+    }
+    &:after {
+    top: 14px;
+  }
+  }
+  @media (max-width: 370px) {
+    &:before,
+    &:after {
+      max-width: 30px;
+    }
+    &:after {
+    top: 11px;
+  }
+  }
+`;
+
+const Desc = styled.span`
+  display: flex;
+  grid-column: 4 / span 4;
+  margin: 0;
+  max-width: 380px;
 `;
 
 const TopHeader = styled.header`
@@ -79,9 +112,28 @@ const TopHeader = styled.header`
   color: ${props => props.theme.colors.foreground};
   background-color: ${props =>
     props.isOpen ? "none" : props.theme.colors.background};
-
-  @media (max-width: 900px) {
+  pointer-events: none;
+  /* @media (max-width: 1260px) {
     grid-template-columns: repeat(6, 1fr);
+  } */
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(6, 1fr);
+    padding: 20px 5%;
+    ${Desc} {
+      grid-column: 3 / span 3;
+    }
+  }
+  @media (max-width: 700px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 600px) {
+    padding: 20px;
+  }
+  @media (max-width: 550px) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: 450px) {
+    font-size: 0.6rem;
   }
 `;
 
@@ -93,16 +145,7 @@ const Logotype = styled.a`
   cursor: pointer;
   color: inherit;
   text-decoration: none;
-`;
-
-const Desc = styled.span`
-  display: flex;
-  grid-column: 4 / span 4;
-  margin: 0;
-  max-width: 380px;
-  @media (max-width: 900px) {
-    grid-column: 3 / span 3;
-  }
+  pointer-events: auto;
 `;
 
 const NavList = styled.nav`
@@ -114,12 +157,36 @@ const NavList = styled.nav`
     color: ${props => props.theme.colors.foreground};
     text-decoration: none;
     text-transform: uppercase;
-    padding-right: 2%;
+    margin-right: 2%;
+    pointer-events: auto;
     &:nth-last-of-type(1) {
-      padding-right: 0;
+      margin-right: 0;
     }
   }
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     display: none;
   }
+`;
+
+const NavLink = styled.a`
+  &:after {
+    content: " ";
+    width: 100%;
+    height: 2px;
+    margin-top: 4px;
+    display: block;
+    transition: 0.2s ease all;
+  }
+  &:hover {
+    &:after {
+      background-color: ${props => props.theme.colors.background};
+    }
+  }
+  ${props =>
+    props.active &&
+    css`
+      &:after {
+        background-color: ${props => props.theme.colors.background};
+      }
+    `}
 `;

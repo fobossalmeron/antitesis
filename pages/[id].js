@@ -1,26 +1,15 @@
-import { useRouter } from "next/router";
 import styled from "styled-components";
 import Head from "next/head";
 import Link from "next/link";
-import Router from "next/router";
 import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
-import ErrorPage from './_error';
-
-import { proyects } from "../portafolio/proyects.json";
-import React, { useState, useEffect } from "react";
+import ErrorPage from "./_error";
+import GridWrapper from "./../components/GridWrapper";
 import VideoPlayer from "../components/videoPlayer";
 
-const Post = ({ queryId, proyect, complete }) => {
-  const router = useRouter();
-  // const proyect = proyects[`${queryId}`];
+import { proyects } from "../portafolio/proyects.json";
 
-  //  if (proyect == undefined) {
-  //   const error = new Error();
-  //   error.statusCode = 404;
-  //   throw error;
-  //  }
-
+const Post = ({ proyect }) => {
   function set(x) {
     return { __html: x };
   }
@@ -61,13 +50,16 @@ const Post = ({ queryId, proyect, complete }) => {
       );
     }
   });
-  if (proyect === "error"){
-    return <ErrorPage statusCode={404} title={"404"}/>
+  if (proyect === "error") {
+    return <ErrorPage statusCode={404} title={"404"} />;
   }
   return (
-    <ProyectWrapper key={"player" + proyect + Math.random()}>
+    <GridWrapper key={"player" + proyect + Math.random()}>
       <Head>
-        <title>Antítesis Films | {router.query.id}</title>
+        <title>
+          Antítesis Films | {proyect.title}{" "}
+          {proyect.title2 !== undefined ? proyect.title2 : null}
+        </title>
       </Head>
       <PlayerContainer>
         <Fade>
@@ -88,15 +80,15 @@ const Post = ({ queryId, proyect, complete }) => {
         <h4>Otros Proyectos</h4>
       </Fade>
       <OtrosProyectos>{otherProyects}</OtrosProyectos>
-    </ProyectWrapper>
+    </GridWrapper>
   );
 };
 
 Post.getInitialProps = async ({ query }) => {
   let proyect = proyects[`${query.id}`];
-   if (proyect == undefined) {
-    proyect = "error"
-   }
+  if (proyect == undefined) {
+    proyect = "error";
+  }
   return { proyect };
 };
 
@@ -112,35 +104,18 @@ const OtrosProyectos = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   figure {
-    background-size: cover;
+    background-size: 100%;
+    background-position: center center;
     grid-column-end: span 2;
     background-color: pink;
     height: 0;
     padding-bottom: 50%;
+    opacity: 0.8;
     cursor: pointer;
-  }
-`;
-
-const ProyectWrapper = styled.div`
-  display: grid;
-  box-sizing: border-box;
-  padding-bottom: 160px;
-  width: 100%;
-  grid-template-columns: repeat(12, 1fr);
-  align-items: flex-end;
-  p,
-  h3,
-  h4,
-  h2 {
-    grid-column: 4 / span 6;
-  }
-  h2 {
-    text-transform: uppercase;
-    font-size: 3.2rem;
-  }
-  p {
-    b {
-      font-family: "DrunkWide", sans-serif;
+    transition: all 0.3s ease;
+    &:hover {
+      background-size: 105%;
+      opacity: 1;
     }
   }
 `;

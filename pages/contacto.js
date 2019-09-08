@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import Head from "next/head";
 import Slide from "react-reveal/Slide";
+import Fade from "react-reveal";
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker
 } from "react-google-maps";
-import { useEffect } from "react";
+import GridWrapper from "./../components/GridWrapper";
 
 const MyMapComponent = withScriptjs(
   withGoogleMap(props => (
@@ -22,7 +23,7 @@ const MyMapComponent = withScriptjs(
 
 export default function Contacto() {
   return (
-    <ContactoWrapper>
+    <GridWrapper>
       <Head>
         <title>Antítesis Films | Contacto</title>
       </Head>
@@ -39,15 +40,17 @@ export default function Contacto() {
         <h4>Locación</h4>
       </Slide>
       <MapContainer>
-        <MyMapComponent
-          isMarkerShown
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyBNMT9E5lly4Y0u-30nbMCsPSPEdLxlsUk&v=3.exp&libraries=geometry,drawing,places`}
-          loadingElement={<div style={{ height: `100%`, width: `100%` }} />}
-          containerElement={<div style={{ height: `400px`, width: `100%` }} />}
-          mapElement={<div style={{ height: `100%`, width: `100%` }} />}
-        />
+            <MyMapComponent
+              isMarkerShown
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyBNMT9E5lly4Y0u-30nbMCsPSPEdLxlsUk&v=3.exp&libraries=geometry,drawing,places`}
+              loadingElement={<div style={{ height: `100%`, width: `100%` }} />}
+              containerElement={
+                <div style={{ height: `400px`, width: `100%` }} />
+              }
+              mapElement={<div style={{ height: `100%`, width: `100%` }} />}
+            />
       </MapContainer>
-      <Slide bottom cascade>
+      <Slide bottom>
         <p>
           Si deseas más información de nuestros servicios o te interesa sumarte
           a nuestro equipo.
@@ -56,7 +59,7 @@ export default function Contacto() {
           <a href="mailto:info@somosantitesis.com">Contáctanos</a>
         </h4>
       </Slide>
-    </ContactoWrapper>
+    </GridWrapper>
   );
 }
 
@@ -65,36 +68,4 @@ const MapContainer = styled.div`
   width: 100%;
   grid-column: 4 / span 6;
   margin-bottom: 5%;
-`;
-
-const ContactoWrapper = styled.div`
-  display: grid;
-  box-sizing: border-box;
-  position: relative;
-  grid-template-columns: repeat(12, 1fr);
-  align-items: flex-end;
-  padding-bottom: 160px;
-  h2 {
-    grid-column: 4 / span 6;
-    text-transform: uppercase;
-    font-size: 3.2rem;
-  }
-  h3,
-  h4,
-  p {
-    grid-column: 4 / span 6;
-  }
-  h4 {
-    overflow: visible;
-    a {
-      color: inherit;
-      text-decoration: none;
-      padding-bottom: 4px;
-      border-bottom: 2px solid ${props => props.theme.colors.background};
-      transition: border-color 0.3s ease;
-      &:hover {
-        border-color: ${props => props.theme.colors.foreground};
-      }
-    }
-  }
 `;

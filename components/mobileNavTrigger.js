@@ -1,10 +1,8 @@
-import Link from "next/link";
 import styled from "styled-components";
-import { useEffect } from "react";
 
-export default function MobileNavTrigger(props) {
+export default function MobileNavTrigger({isOpen}) {
   return (
-      <NavTriggerMobile onClick={() => props.toggleNav()} open={props.isOpen} />
+      <NavTriggerMobile onClick={() => props.toggleNav()} open={isOpen} />
   );
 }
 

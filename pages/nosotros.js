@@ -2,11 +2,11 @@ import styled from "styled-components";
 import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
 import Head from "next/head";
-import {useEffect} from "react";
+import GridWrapper from "./../components/GridWrapper";
 
 export default function Nosotros() {
   return (
-    <NosotrosWrapper>
+    <GridWrapper>
           <Head>
         <title>Antítesis Films | Nosotros</title>
       </Head>
@@ -23,8 +23,11 @@ export default function Nosotros() {
         <h2>Antitesis</h2>
         <h2>Films</h2>
       </Slide>
-      <Slide>
+      <Slide bottom>
         <h3>Nosotros</h3>
+        </Slide>
+
+        <Fade>
         <p>
           Antítesis nace en 2015 con el objetivo de crear contenido audiovisual
           de calidad con un objetivo social.
@@ -49,9 +52,9 @@ export default function Nosotros() {
           soluciones audiovisuales significativas.
         </p>
         <h3>Servicios</h3>
-      </Slide>
+        </Fade>
       <UlStyled>
-        <Slide>
+        <Fade>
           <li>Cápsulas</li>
           <li>Entrevistas</li>
           <li>Videoclips</li>
@@ -60,20 +63,19 @@ export default function Nosotros() {
           <li>Edición</li>
           <li>Renta de equipo</li>
           <li>Servicios de Producción</li>
-        </Slide>
+        </Fade>
       </UlStyled>
       <H4Styled>
-        <Slide>
+        <Fade>
           Investigación y creación de contenido de carácter social y con
           consciencia sobre los derechos humanos.
-        </Slide>
+        </Fade>
       </H4Styled>
-    </NosotrosWrapper>
+    </GridWrapper>
   );
 }
 
 const UlStyled = styled.ul`
-  grid-column: 4 / span 6;
   list-style: none;
   margin: 0;
   font-size: 1.32rem;
@@ -87,16 +89,17 @@ const UlStyled = styled.ul`
     margin: 0;
     padding: 0;
   }
+  @media (max-width: 700px) {
+    column-count:1;
+  }
 `;
 
 const H4Styled = styled.span`
-  grid-column: 4 / span 6;
   font-size: 1.32rem;
   letter-spacing: 1px;
 `;
 
 const Hero = styled.div`
-  grid-column: 4 / span 6;
   display: flex;
   height: 0px;
   padding-bottom: 51%;
@@ -107,23 +110,5 @@ const Hero = styled.div`
     height: 100%;
     position: absolute;
     background-size: cover;
-  }
-`;
-
-const NosotrosWrapper = styled.div`
-  display: grid;
-  box-sizing: border-box;
-  padding-bottom: 160px;
-  width: 100%;
-  grid-template-columns: repeat(12, 1fr);
-  align-items: flex-end;
-  h2 {
-    grid-column: 4 / span 6;
-    text-transform: uppercase;
-    font-size: 3.2rem;
-  }
-  p,
-  h3 {
-    grid-column: 4 / span 6;
   }
 `;

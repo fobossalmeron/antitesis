@@ -1,14 +1,9 @@
-import Link from "next/link";
 import Head from "next/head";
 import styled, { createGlobalStyle } from "styled-components";
 import Header from "./header";
 import MobileNav from "./mobileNav";
 import Logo from "../static/assets/img/favicon.svg";
-import Ig from "../static/assets/img/social/ig.svg";
-import Tw from "../static/assets/img/social/tw.svg";
-import Fb from "../static/assets/img/social/fb.svg";
-import Yt from "../static/assets/img/social/yt.svg";
-import Vm from "../static/assets/img/social/vm.svg";
+import SocialNav from "./SocialNav";
 
 import { useEffect, useState } from "react";
 
@@ -37,7 +32,7 @@ export default ({ children, title = "Antitesis", changeTheme, visible }) => {
       console.log("Is hidden for landing page? " + hideForLanding);
     }
     window.scrollTo(0, 0);
-  }, []);
+  }, [title]);
 
   const doChangeTheme = () => {
     changeTheme();
@@ -70,43 +65,7 @@ export default ({ children, title = "Antitesis", changeTheme, visible }) => {
         </ModeToggler>
 
         <Footer hidden={hideForLanding} isOpen={isOpen}>
-          <Social isOpen={isOpen}>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.facebook.com/somos.antitesis"
-            >
-              <Fb />
-            </a>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.instagram.com/somos.antitesis/"
-            >
-              <Tw />
-            </a>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.instagram.com/somos.antitesis/"
-            >
-              <Ig />
-            </a>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.instagram.com/somos.antitesis/"
-            >
-              <Yt />
-            </a>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.instagram.com/somos.antitesis/"
-            >
-              <Vm />
-            </a>
-          </Social>
+          <SocialNav isOpen={isOpen}/>
           <Date>© MMXIX</Date>
         </Footer>
       </PageWrapper>
@@ -127,10 +86,17 @@ const PageWrapper = styled.div`
   justify-content: flex-start;
   color: ${props => props.theme.colors.foreground};
   background-color: ${props => props.theme.colors.background};
+  @media (max-width: 700px) {
+    padding-top:150px;
+  }
+  @media (max-width: 550px) {
+    padding-top:110px;
+  }
 `;
 
 const ModeToggler = styled.div`
   cursor: pointer;
+  justify-content: flex-end;
   display: ${props => (props.hidden ? "none" : "flex")};
   position: fixed;
   right: 0;
@@ -138,7 +104,7 @@ const ModeToggler = styled.div`
   transform: translateY(50%);
   width: 15%;
   height: auto;
-  padding-right: 4%;
+  margin-right: 4%;
   max-width: 175px;
   z-index: 10;
   svg {
@@ -166,47 +132,9 @@ const Footer = styled.footer`
       : props.theme.colors.foreground};
   justify-content: space-between;
   z-index: 10;
-`;
-
-const Social = styled.div`
-  align-self: flex-end;
-  justify-self: flex-start;
-  font-size: 1.3em;
-  min-width: 85px;
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  svg {
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-    * {
-      fill: ${props =>
-        props.isOpen
-          ? props.theme.colors.background
-          : props.theme.colors.foreground};
-      transition: fill 300ms ease-out;
-    }
-    .plasta {
-      fill: ${props =>
-        props.isOpen
-          ? props.theme.colors.background
-          : props.theme.colors.foreground};
-      opacity: 0;
-      transition: opacity 150ms ease-out;
-    }
-    &:hover {
-      *:not(.plasta) {
-        fill: ${props =>
-          props.isOpen
-            ? props.theme.colors.foreground
-            : props.theme.colors.background};
-      }
-      .plasta {
-        opacity: 1;
-      }
-    }
+  pointer-events:none;
+  @media (max-width: 1200px) {
+    justify-content: flex-end;
   }
 `;
 
@@ -215,6 +143,16 @@ const Date = styled.div`
   justify-self: flex-end;
   font-size: 1.3em;
   min-width: 100px;
+  text-align:right;
+  @media (max-width: 800px) {
+    font-size:1rem;
+  }
+  @media (max-width: 700px) {
+    font-size:.8rem;
+  }
+  @media (max-width: 500px) {
+    font-size:.6rem;
+  }
 `;
 
 const Styles = createGlobalStyle`

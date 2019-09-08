@@ -3,8 +3,6 @@ import VimeoPlayer from "react-player";
 import styled, { css, keyframes } from "styled-components";
 import Loadable from "react-loadable";
 import Loader from "./loader";
-import withReveal from 'react-reveal/withReveal';
-import Fade from "react-reveal/Fade";
 
 const ThePlayer = Loadable({
   loader: () => import("react-player"),
@@ -76,13 +74,6 @@ function VideoPlayer(props) {
 export default VideoPlayer;
 
 //52.7 es el de todos menos, desechables tiene una línea negra a la derecha y el trailer está en 1080p
-
-// const Title = withReveal(styled.h1`
-// font-size: 1.5em;
-// text-align: center;
-// color: palevioletred;
-
-// `, <Fade left/>);
 
 const VideoWrapper = styled.div`
   padding-bottom: ${props => props.ratio || "52.7%"};
