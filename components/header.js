@@ -36,7 +36,7 @@ export default function Header(props) {
 
 const NavTriggerMobile = styled.div`
   display: none;
-  height: 30px;
+  height: 45px;
   max-width: 50px;
   width: 100%;
   justify-self: flex-end;
@@ -58,10 +58,21 @@ const NavTriggerMobile = styled.div`
     position: absolute;
     right: 0px;
     top: 0px;
+    transition: transform 0.3s ease;
   }
   &:after {
     top: 19px;
   }
+  ${props =>
+    props.open &&
+    css`
+      &:before {
+        transform: rotate(45deg) translate3d(13px, 14px, 0px);
+      }
+      &:after {
+        transform: rotate(-45deg) translate3d(-1px, 0px, 0px);
+      }
+    `}
   @media (max-width: 1200px) {
     display: flex;
   }
@@ -73,11 +84,18 @@ const NavTriggerMobile = styled.div`
     &:before,
     &:after {
       height: 2px;
-      max-width:40px;
+      max-width: 40px;
     }
+    ${props =>
+    props.open &&
+    css`
+      &:before {
+        transform: rotate(45deg) translate3d(10px,11px,0px);
+      }
+    `}
     &:after {
-    top: 14px;
-  }
+      top: 14px;
+    }
   }
   @media (max-width: 370px) {
     &:before,
@@ -85,8 +103,15 @@ const NavTriggerMobile = styled.div`
       max-width: 30px;
     }
     &:after {
-    top: 11px;
-  }
+      top: 11px;
+    }
+    ${props =>
+    props.open &&
+    css`
+      &:before {
+        transform: rotate(45deg) translate3d(8px,9px,0px);
+      }
+    `}
   }
 `;
 
@@ -179,14 +204,14 @@ const NavLink = styled.a`
   }
   &:hover {
     &:after {
-      background-color: ${props => props.theme.colors.background};
+      background-color: ${props => props.theme.colors.foreground};
     }
   }
   ${props =>
     props.active &&
     css`
       &:after {
-        background-color: ${props => props.theme.colors.background};
+        background-color: ${props => props.theme.colors.foreground};
       }
     `}
 `;

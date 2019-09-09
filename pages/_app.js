@@ -113,7 +113,6 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <Container>
         <ThemeProvider theme={this.state.isDarkMode ? darkTheme : theme}>
           <Layout
             changeTheme={this.changeTheme.bind(this)}
@@ -131,7 +130,6 @@ export default class MyApp extends App {
             <Component {...pageProps} />
           </Layout>
         </ThemeProvider>
-      </Container>
     );
   }
 }

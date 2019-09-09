@@ -30,6 +30,7 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(12, 1fr);
   align-items: flex-end;
   padding-bottom: 160px;
+  -webkit-overflow-scrolling: touch;
   h2 {
     text-transform: uppercase;
     font-size: 3.2rem;

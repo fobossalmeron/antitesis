@@ -2,9 +2,13 @@
 
 - Restrict Maps API calls
 - true loading bars
-- responsive
-- menu X on mobile
 - thresholds of mobile scroll if isMobile
+
+# Errors
+- scrollbar se esconde detrás de header
+- scrolltype en mobile
+- barras en subtítulos largos - Jean
+- SSR no trae los videos
 
 
 # Cambios y faltantes:
