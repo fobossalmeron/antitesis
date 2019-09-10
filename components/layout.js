@@ -10,9 +10,9 @@ import { useEffect, useState } from "react";
 export default ({ children, title = "Antitesis", changeTheme, visible }) => {
   const [isOpen, setOpen] = useState(false);
 
-  useEffect(() => {
-    document.getElementById("PageWrapper").scrollTop = 0;
-  }, [children]);
+  // useEffect(() => {
+  //   document.getElementById("PageWrapper").scrollTop = 0;
+  // }, [children]);
 
   const toggleNav = () => {
     setOpen(!isOpen);
@@ -27,9 +27,9 @@ export default ({ children, title = "Antitesis", changeTheme, visible }) => {
   useEffect(() => {
     if (window.document.title === "Antítesis | Próximamente") {
       hideForLanding = true;
-      console.log("Is hidden for landing page? " + hideForLanding);
+      // console.log("Is hidden for landing page? " + hideForLanding);
     } else {
-      console.log("Is hidden for landing page? " + hideForLanding);
+      // console.log("Is hidden for landing page? " + hideForLanding);
     }
     window.scrollTo(0, 0);
   }, [title]);
@@ -86,6 +86,7 @@ const PageWrapper = styled.div`
   justify-content: flex-start;
   color: ${props => props.theme.colors.foreground};
   background-color: ${props => props.theme.colors.background};
+  -webkit-overflow-scrolling: touch;
   @media (max-width: 700px) {
     padding-top:150px;
   }

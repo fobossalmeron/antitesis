@@ -3,8 +3,12 @@ import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
 import Head from "next/head";
 import GridWrapper from "./../components/GridWrapper";
+import {useEffect} from "react";
 
 export default function Nosotros() {
+    useEffect(() => {
+    document.getElementById("PageWrapper").scrollTop = 0;
+  }, []);
   return (
     <GridWrapper>
           <Head>
@@ -102,7 +106,7 @@ const H4Styled = styled.span`
 const Hero = styled.div`
   display: flex;
   height: 0px;
-  padding-bottom: 51%;
+  padding-bottom: 56%;
   width: 100%;
   position: relative;
   figure {

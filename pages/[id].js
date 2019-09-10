@@ -6,10 +6,15 @@ import Fade from "react-reveal/Fade";
 import ErrorPage from "./_error";
 import GridWrapper from "./../components/GridWrapper";
 import VideoPlayer from "../components/videoPlayer";
+import { useEffect } from "react";
 
 import { proyects } from "../portafolio/proyects.json";
 
 const Post = ({ proyect }) => {
+  useEffect(() => {
+    document.getElementById("PageWrapper").scrollTop = 0;
+  }, [proyect]);
+
   function set(x) {
     return { __html: x };
   }
@@ -69,10 +74,12 @@ const Post = ({ proyect }) => {
           />
         </Fade>
       </PlayerContainer>
-      <Slide bottom cascade>
-        <h2>{proyect.title}</h2>
-        {proyect.title2 !== undefined ? <h2>{proyect.title2}</h2> : ""}
-      </Slide>
+      <ResponsiveH2>
+        <Slide bottom cascade>
+          <h2>{proyect.title}</h2>
+          {proyect.title2 !== undefined ? <h2>{proyect.title2}</h2> : ""}
+        </Slide>
+      </ResponsiveH2>
       <Fade>
         <h3>{proyect.subtitle}</h3>
         {description}
@@ -93,6 +100,38 @@ Post.getInitialProps = async ({ query }) => {
 };
 
 export default Post;
+
+const ResponsiveH2 = styled.div`
+  h2 {
+    white-space: nowrap;}
+
+    @media (max-width: 1620px) {
+      h2{font-size: 3rem;}
+
+    }
+    @media (max-width: 1515px) {
+      h2{font-size: 2.7rem;}
+    }
+    @media (max-width: 1200px) {
+      h2{font-size: 2.5rem;}
+    }
+    @media (max-width: 740px) {
+      h2{font-size: 2.2rem;}
+    }
+    @media (max-width: 650px) {
+      h2{font-size: 1.9rem;}
+    }
+    @media (max-width: 560px) {
+      h2{font-size: 1.6rem;}
+    }
+    @media (max-width: 470px) {
+      h2{font-size: 1.3rem;}
+    }
+    @media (max-width: 385px) {
+      h2{font-size: 1rem;}
+    }
+  }
+`;
 
 const PlayerContainer = styled.div`
   grid-column: 4 / span 6;

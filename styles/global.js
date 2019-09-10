@@ -93,7 +93,7 @@ let theStyles = `
 
   h2 {
     margin:15% 0 0 0;
-    overflow-y:hidden;
+    overflow:hidden;
   }
 
   h2 + h2 {

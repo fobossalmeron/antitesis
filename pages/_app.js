@@ -1,5 +1,5 @@
 import React from "react";
-import App, { Container } from "next/app";
+import App from "next/app";
 import { ThemeProvider } from "styled-components";
 import LoadingBar from "react-top-loading-bar";
 import Layout from "../components/layout";
@@ -17,13 +17,12 @@ export default class MyApp extends App {
     };
   }
 
-  //ShouldComponentUpdate sale igual, /nosotros  /nosotros
   authenticate() {
     return new Promise(resolve => setTimeout(resolve, 0)); //1500
   }
 
   componentDidUpdate() {
-    console.log("updated");
+    // console.log("updated");
   }
 
   handleRouteComplete = url => {
@@ -64,14 +63,14 @@ export default class MyApp extends App {
       }
     });
 
-    console.log("did mount");
+    // console.log("did mount");
     // Router.events.on("routeChangeStart", this.handleRouteStart);
     Router.events.on("routeChangeComplete", this.handleRouteComplete);
     Router.events.on("routeChangeError", this.handleRouteError);
   }
 
   componentWillUnmount() {
-    console.log("will unmount");
+    // console.log("will unmount");
     Router.events.off("routeChangeStart", this.handleRouteStart);
     Router.events.off("routeChangeComplete", this.handleRouteComplete);
     Router.events.off("routeChangeError", this.handleRouteError);

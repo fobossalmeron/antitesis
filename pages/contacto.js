@@ -9,6 +9,7 @@ import {
   Marker
 } from "react-google-maps";
 import GridWrapper from "./../components/GridWrapper";
+import {useEffect} from "react";
 
 const MyMapComponent = withScriptjs(
   withGoogleMap(props => (
@@ -22,11 +23,14 @@ const MyMapComponent = withScriptjs(
 );
 
 export default function Contacto() {
+  useEffect(() => {
+    document.getElementById("PageWrapper").scrollTop = 0;
+  }, []);
   return (
     <GridWrapper>
-      <Head>
+      {/* <Head>
         <title>Antítesis Films | Contacto</title>
-      </Head>
+      </Head> */}
       <Slide bottom cascade>
         <h2>Contacto</h2>
       </Slide>

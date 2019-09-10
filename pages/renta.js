@@ -18,7 +18,7 @@ export default function Renta() {
           Contamos con equipo de cámara y de producción a disposición para tus
           proyectos.
         </p>
-        <h4><a href="../static/assets/pdf/Antitesis_renta.pdf">Ver PDF</a></h4>
+        <h4><a target="_blank" href="../static/assets/pdf/Antitesis_renta.pdf">Ver PDF</a></h4>
       </Slide>
     </GridWrapper>
   );

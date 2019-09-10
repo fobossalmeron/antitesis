@@ -12,16 +12,24 @@ export default function MobileNav(props) {
         <Navs>
           <MobileNavList onClick={props.closeNav}>
             <ActiveLink href="/home">
-              <NavLink>Home</NavLink>
+              <NavLink>
+                <span>Home</span>
+              </NavLink>
             </ActiveLink>
             <ActiveLink href="/nosotros">
-              <NavLink>Nosotros</NavLink>
+              <NavLink>
+                <span>Nosotros</span>
+              </NavLink>
             </ActiveLink>
             <ActiveLink href="/renta">
-              <NavLink>Renta</NavLink>
+              <NavLink>
+                <span>Renta</span>
+              </NavLink>
             </ActiveLink>
             <ActiveLink href="/contacto">
-              <NavLink>Contacto</NavLink>
+              <NavLink>
+                <span>Contacto</span>
+              </NavLink>
             </ActiveLink>
           </MobileNavList>
           <SocialNav isOpen={props.isOpen} menuNav />
@@ -39,26 +47,22 @@ const Navs = styled.div`
 `;
 
 const NavLink = styled.a`
-  &:after {
-    content: " ";
-    width: 35px;
-    height: 9px;
-    margin-left: 10px;
-    opacity: 0.5;
-    margin-top: 4px;
-    display: inline-block;
-    transition: 0.2s ease all;
-    background-color: ${props =>
-      props.active ? props.theme.colors.background : "transparent"};
-  }
-  &:hover::after {
-    background-color: ${props => props.theme.colors.background};
-  }
-  @media (max-width: 900px) {
+margin-bottom:10px;
+  span {
+    position: relative;
     &:after {
-      width: 16px;
-      height: 4px;
-      margin-left: 5px;
+      content: " ";
+      height: 2px;
+      width: 100%;
+      margin-top: 0px;
+      display: block;
+      position: absolute;
+      transition: 0.2s ease all;
+      background-color: ${props =>
+        props.active ? props.theme.colors.background : "transparent"};
+    }
+    &:hover::after {
+      background-color: ${props => props.theme.colors.background};
     }
   }
 `;

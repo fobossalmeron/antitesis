@@ -67,10 +67,10 @@ const NavTriggerMobile = styled.div`
     props.open &&
     css`
       &:before {
-        transform: rotate(45deg) translate3d(13px, 14px, 0px);
+        transform: rotate(-45deg) translate3d(-7px, 16px, 0px);
       }
       &:after {
-        transform: rotate(-45deg) translate3d(-1px, 0px, 0px);
+        transform: rotate(45deg) translate3d(3px, -7px, 0px);
       }
     `}
   @media (max-width: 1200px) {
@@ -87,12 +87,15 @@ const NavTriggerMobile = styled.div`
       max-width: 40px;
     }
     ${props =>
-    props.open &&
-    css`
-      &:before {
-        transform: rotate(45deg) translate3d(10px,11px,0px);
-      }
-    `}
+      props.open &&
+      css`
+        &:before {
+          transform: rotate(-45deg) translate3d(-6px, 13px, 0px);
+        }
+        &:after {
+          transform: rotate(45deg) translate3d(3px, -4px, 0px);
+        }
+      `}
     &:after {
       top: 14px;
     }
@@ -106,12 +109,15 @@ const NavTriggerMobile = styled.div`
       top: 11px;
     }
     ${props =>
-    props.open &&
-    css`
-      &:before {
-        transform: rotate(45deg) translate3d(8px,9px,0px);
-      }
-    `}
+      props.open &&
+      css`
+        &:before {
+          transform: rotate(-45deg) translate3d(-5px, 10px, 0px);
+        }
+        &:after {
+          transform: rotate(45deg) translate3d(2px, -3px, 0px);
+        }
+      `}
   }
 `;
 
@@ -135,12 +141,8 @@ const TopHeader = styled.header`
   padding: 2% 4% 2% 4%;
   z-index: 8;
   color: ${props => props.theme.colors.foreground};
-  background-color: ${props =>
-    props.isOpen ? "none" : props.theme.colors.background};
+  background-color: ${props => props.theme.colors.background};
   pointer-events: none;
-  /* @media (max-width: 1260px) {
-    grid-template-columns: repeat(6, 1fr);
-  } */
   @media (max-width: 960px) {
     grid-template-columns: repeat(6, 1fr);
     padding: 20px 5%;
