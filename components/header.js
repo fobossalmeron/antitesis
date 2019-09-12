@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import ActiveLink from "./activeLink";
-import MobileNavTrigger from "./MobileNavTrigger"
+import NavTrigger from "./NavTrigger";
 
 export default function Header(props) {
   return (
@@ -30,7 +30,7 @@ export default function Header(props) {
           </ActiveLink>
         </NavList>
       </TopHeader>
-      <MobileNavTrigger onClick={() => props.toggleNav()} open={props.isOpen} />
+      <NavTrigger onClick={() => props.toggleNav()} open={props.isOpen} />
     </>
   );
 }
@@ -57,8 +57,8 @@ const TopHeader = styled.header`
   color: ${props => props.theme.colors.foreground};
   background-color: ${props => props.theme.colors.background};
   pointer-events: none;
-  @media (max-width:1200px){
-    padding-top:22px;
+  @media (max-width: 1200px) {
+    padding-top: 22px;
   }
   @media (max-width: 960px) {
     grid-template-columns: repeat(6, 1fr);

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export default function MobileNavTrigger(props) {
+export default function NavTrigger(props) {
   return (
     <>
       <NavTriggerMobile onClick={props.onClick} open={props.open} />
