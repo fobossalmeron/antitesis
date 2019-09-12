@@ -1,9 +1,9 @@
 import Head from "next/head";
 import styled, { createGlobalStyle } from "styled-components";
 import Header from "./header";
-import MobileNav from "./MobileNav";
 import Logo from "../static/assets/img/favicon.svg";
 import SocialNav from "./SocialNav";
+import Nav from "./Nav";
 
 import { useEffect, useState } from "react";
 
@@ -53,7 +53,7 @@ export default ({ children, title = "Antitesis", changeTheme, visible }) => {
           closeNav={closeNav}
           isOpen={isOpen}
         />
-        <MobileNav toggleNav={toggleNav} closeNav={closeNav} isOpen={isOpen} />
+        <Nav toggleNav={toggleNav} closeNav={closeNav} isOpen={isOpen} />
 
         {children}
         <ModeToggler

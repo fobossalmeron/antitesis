@@ -6,7 +6,6 @@ export default function MobileNav(props) {
   return (
     <>
       <NavTrigger onClick={props.toggleNav} open={props.isOpen} />
-
       <NavWrapper open={props.isOpen}>
         <Navs>
           <MobileNavList onClick={props.closeNav}>
@@ -46,13 +45,13 @@ const Navs = styled.div`
 `;
 
 const NavLink = styled.a`
-margin-bottom:10px;
+  margin-bottom:10px;
   span {
     position: relative;
     &:after {
       content: " ";
-      height: 2px;
       width: 100%;
+      height: 2px;
       margin-top: 0px;
       display: block;
       position: absolute;
