@@ -72,7 +72,7 @@ const Proyect = props => {
           </Subtitle>
           <Fade bottom when={inView}>
             <Link href="/[id]" as={`/${props.link}`}>
-              <h4>Ver Proyecto</h4>
+              <h4>Ver Más</h4>
             </Link>
           </Fade>
           {props.isMobile ? (
@@ -204,9 +204,9 @@ const ProyectWrapper = styled.section`
     h3 {
       font-size: 2rem;
     }
-    h4 {
+    /* h4 {
       font-size: 0.8rem;
-    }
+    } */
   }
   @media (max-width: 600px) {
     height: auto;
@@ -222,9 +222,9 @@ const ProyectWrapper = styled.section`
     h3 {
       font-size: 1.9rem;
     }
-    h4 {
+    /* h4 {
       font-size: 0.6rem;
-    }
+    } */
   }
   @media (max-width: 360px) {
     h2 {

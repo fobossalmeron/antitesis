@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Head from "next/head";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import { proyects } from "../portafolio/proyects.json";
@@ -7,6 +6,9 @@ import ReactCursorPosition from "react-cursor-position";
 import CursorVideo from "./../components/CursorVideo";
 import Proyect from "./../components/Proyect";
 import withSizes from "react-sizes";
+import HeadSEO from "./../components/HeadSEO";
+import ArrowIcon from "./../static/assets/img/arrow.svg";
+
 // import { useInView } from "react-intersection-observer";
 
 // const Trigger = props => {
@@ -62,9 +64,13 @@ const Index = props => {
 
   return (
     <HomeWrapper isEnabled={!props.isMobile} className="wrapperEnd">
-      <Head>
-        <title>Antitesis Films</title>
-      </Head>
+      <HeadSEO
+        title={"Antitesis Films | Inicio"}
+        desc={`Somos una casa productora de cine, videoclips y formatos web, que se caracterizan 
+        por ser la Antítesis de la agenda global, resultando en ficciones y documentales auténticos 
+        desde una perspectiva que cuestiona.`}
+        // canonical={"https://somosantitesis.com/"}
+      />
       {props.isNotMobile ? <CursorVideo counter={counter} /> : null}
       {slides}
       {/* {!again ? slides : null} */}
@@ -72,6 +78,9 @@ const Index = props => {
       <Counter>
         <Fade>{counter + 1 + "/8"}</Fade>
       </Counter>
+      <Arrow reveal={counter == 0 || counter == 7} turned={counter > 1}>
+        <ArrowIcon />
+      </Arrow>
     </HomeWrapper>
   );
 };
@@ -82,16 +91,42 @@ const mapSizesToProps = ({ width }) => ({
 
 export default withSizes(mapSizesToProps)(Index);
 
-const TriggerBottom = styled.div`
-  height: calc(100vh - 180px);
-  width: 100%;
-  position: relative;
-  scroll-snap-align: end;
-  scroll-snap-stop: always;
-  display: block;
-  grid-column: 4 / span 7;
+// const TriggerBottom = styled.div`
+//   height: calc(100vh - 180px);
+//   width: 100%;
+//   position: relative;
+//   scroll-snap-align: end;
+//   scroll-snap-stop: always;
+//   display: block;
+//   grid-column: 4 / span 7;
+//   @media (max-width: 600px) {
+//     display: none;
+//   }
+// `;
+
+const Arrow = styled.div`
+  position: fixed;
+  padding-bottom: 2%;
+  padding-top: 1%;
+  padding-left: 76.9%;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  opacity: ${props => (props.reveal ? 1 : 0)};
+  transition: opacity 0.3s ease;
+  pointer-events:none;
+  @media (max-width: 1200px) {
+    padding-left: 50%;
+  }
   @media (max-width: 600px) {
     display:none;
+  }
+  svg {
+    width: 50px;
+    height: auto;
+    display: block;
+    margin-bottom: -3px;
+    transform: ${props => props.turned? "rotate(180deg)" : "rotate(0)"};
   }
 `;
 

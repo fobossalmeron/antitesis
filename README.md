@@ -1,16 +1,14 @@
 # Antitesis Films Web App
 
-- Restrict Maps API calls
-- true loading bars
-- thresholds of mobile scroll if isMobile
+- Restrict Maps API calls || change to lighter map 
+- Favicons y og Image en Head
 
 # Errors
 - scrollbar se esconde detrás de header
-- scrolltype en mobile
-- SSR no trae los videos
+- SSR no trae los videos en primer load de Home
+- Videos doble click en mobile 
 
 
 # Cambios y faltantes:
-- Si pueden los videos comprimirse más
-- Page titles and descriptions (if any)
-- OG images
+- Si pueden los videos comprimirse más -> tamaño incorrecto
+- OG images -> falta aún 

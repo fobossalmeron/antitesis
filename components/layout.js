@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styled, { createGlobalStyle } from "styled-components";
 import Header from "./header";
-import MobileNav from "./mobileNav";
+import MobileNav from "./MobileNav";
 import Logo from "../static/assets/img/favicon.svg";
 import SocialNav from "./SocialNav";
 

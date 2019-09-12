@@ -15,13 +15,13 @@ export default function SocialNav({ isOpen, menuNav }) {
       >
         <Fb />
       </a>
-      <a
+      {/* <a
         target="_blank"
         rel="noopener noreferrer"
         href="https://www.instagram.com/somos.antitesis/"
       >
         <Tw />
-      </a>
+      </a> */}
       <a
         target="_blank"
         rel="noopener noreferrer"
@@ -32,7 +32,7 @@ export default function SocialNav({ isOpen, menuNav }) {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.instagram.com/somos.antitesis/"
+        href="https://www.youtube.com/channel/UC4FaZ7lsNEeAOzAKaAJKUXA"
       >
         <Yt />
       </a>

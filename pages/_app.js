@@ -18,7 +18,7 @@ export default class MyApp extends App {
   }
 
   authenticate() {
-    return new Promise(resolve => setTimeout(resolve, 0)); //1500
+    return new Promise(resolve => setTimeout(resolve, 1500)); //1500
   }
 
   componentDidUpdate() {

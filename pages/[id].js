@@ -7,10 +7,11 @@ import ErrorPage from "./_error";
 import GridWrapper from "./../components/GridWrapper";
 import VideoPlayer from "../components/videoPlayer";
 import { useEffect } from "react";
+import HeadSEO from "./../components/HeadSEO";
 
 import { proyects } from "../portafolio/proyects.json";
 
-const Post = ({ proyect }) => {
+const Post = ({ proyect, query }) => {
   useEffect(() => {
     document.getElementById("PageWrapper").scrollTop = 0;
   }, [proyect]);
@@ -60,9 +61,16 @@ const Post = ({ proyect }) => {
   }
   return (
     <GridWrapper key={"player" + proyect + Math.random()}>
+      <HeadSEO
+        title={`Antítesis Films | Proyectos | ${proyect.title} ${
+          proyect.title2 !== undefined ? proyect.title2 : ""
+        }`}
+        desc={proyect.meta}
+        // canonical={`https://somosantitesis.com/${query.id}`}
+      />
       <Head>
         <title>
-          Antítesis Films | {proyect.title}{" "}
+          Antítesis Films | Proyectos | {proyect.title}
           {proyect.title2 !== undefined ? proyect.title2 : null}
         </title>
       </Head>
@@ -96,7 +104,7 @@ Post.getInitialProps = async ({ query }) => {
   if (proyect == undefined) {
     proyect = "error";
   }
-  return { proyect };
+  return { proyect, query };
 };
 
 export default Post;

@@ -3,17 +3,22 @@ import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
 import Head from "next/head";
 import GridWrapper from "./../components/GridWrapper";
-import {useEffect} from "react";
+import { useEffect } from "react";
+import HeadSEO from "./../components/HeadSEO";
 
 export default function Nosotros() {
-    useEffect(() => {
+  useEffect(() => {
     document.getElementById("PageWrapper").scrollTop = 0;
   }, []);
   return (
     <GridWrapper>
-          <Head>
-        <title>Antítesis Films | Nosotros</title>
-      </Head>
+      <HeadSEO
+        title={"Antítesis Films | Nosotros"}
+        desc={`Somos una casa productora de cine, videoclips y formatos web, que se caracterizan 
+        por ser la Antítesis de la agenda global, resultando en ficciones y documentales auténticos 
+        desde una perspectiva que cuestiona.`}
+        // canonical={"https://somosantitesis.com/nosotros"}
+      />
       <Hero>
         <Fade>
           <figure
@@ -29,9 +34,9 @@ export default function Nosotros() {
       </Slide>
       <Slide bottom>
         <h3>Nosotros</h3>
-        </Slide>
+      </Slide>
 
-        <Fade>
+      <Fade>
         <p>
           Antítesis nace en 2015 con el objetivo de crear contenido audiovisual
           de calidad con un objetivo social.
@@ -56,7 +61,7 @@ export default function Nosotros() {
           soluciones audiovisuales significativas.
         </p>
         <h3>Servicios</h3>
-        </Fade>
+      </Fade>
       <UlStyled>
         <Fade>
           <li>Cápsulas</li>
@@ -94,7 +99,7 @@ const UlStyled = styled.ul`
     padding: 0;
   }
   @media (max-width: 700px) {
-    column-count:1;
+    column-count: 1;
   }
 `;
 

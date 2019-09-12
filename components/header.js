@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import ActiveLink from "./activeLink";
+import MobileNavTrigger from "./MobileNavTrigger"
 
 export default function Header(props) {
   return (
@@ -29,97 +30,10 @@ export default function Header(props) {
           </ActiveLink>
         </NavList>
       </TopHeader>
-      <NavTriggerMobile onClick={() => props.toggleNav()} open={props.isOpen} />
+      <MobileNavTrigger onClick={() => props.toggleNav()} open={props.isOpen} />
     </>
   );
 }
-
-const NavTriggerMobile = styled.div`
-  display: none;
-  height: 45px;
-  max-width: 50px;
-  width: 100%;
-  justify-self: flex-end;
-  position: fixed;
-  right: 0;
-  top: 0;
-  margin-top: calc(2% + 4px);
-  margin-right: 4%;
-  z-index: 13;
-  &:before,
-  &:after {
-    content: " ";
-    height: 3px;
-    width: 100%;
-    background-color: ${props =>
-      props.open
-        ? props.theme.colors.background
-        : props.theme.colors.foreground};
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    transition: transform 0.3s ease;
-  }
-  &:after {
-    top: 19px;
-  }
-  ${props =>
-    props.open &&
-    css`
-      &:before {
-        transform: rotate(-45deg) translate3d(-7px, 16px, 0px);
-      }
-      &:after {
-        transform: rotate(45deg) translate3d(3px, -7px, 0px);
-      }
-    `}
-  @media (max-width: 1200px) {
-    display: flex;
-  }
-  @media (max-width: 960px) {
-    margin-top: 24px;
-    margin-right: 5%;
-  }
-  @media (max-width: 700px) {
-    &:before,
-    &:after {
-      height: 2px;
-      max-width: 40px;
-    }
-    ${props =>
-      props.open &&
-      css`
-        &:before {
-          transform: rotate(-45deg) translate3d(-6px, 13px, 0px);
-        }
-        &:after {
-          transform: rotate(45deg) translate3d(3px, -4px, 0px);
-        }
-      `}
-    &:after {
-      top: 14px;
-    }
-  }
-  @media (max-width: 370px) {
-    &:before,
-    &:after {
-      max-width: 30px;
-    }
-    &:after {
-      top: 11px;
-    }
-    ${props =>
-      props.open &&
-      css`
-        &:before {
-          transform: rotate(-45deg) translate3d(-5px, 10px, 0px);
-        }
-        &:after {
-          transform: rotate(45deg) translate3d(2px, -3px, 0px);
-        }
-      `}
-  }
-`;
 
 const Desc = styled.span`
   display: flex;
@@ -143,9 +57,12 @@ const TopHeader = styled.header`
   color: ${props => props.theme.colors.foreground};
   background-color: ${props => props.theme.colors.background};
   pointer-events: none;
+  @media (max-width:1200px){
+    padding-top:22px;
+  }
   @media (max-width: 960px) {
     grid-template-columns: repeat(6, 1fr);
-    padding: 20px 5%;
+    padding: 22px 5%;
     ${Desc} {
       grid-column: 3 / span 3;
     }
@@ -154,7 +71,7 @@ const TopHeader = styled.header`
     font-size: 1rem;
   }
   @media (max-width: 600px) {
-    padding: 20px;
+    padding: 22px 20px 20px 20px;
   }
   @media (max-width: 550px) {
     font-size: 0.8rem;

@@ -1,6 +1,5 @@
 import SocialNav from "./SocialNav";
 import styled, { css } from "styled-components";
-import logo from "../static/assets/img/favicon.svg";
 import ActiveLink from "./activeLink";
 
 export default function MobileNav(props) {

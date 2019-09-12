@@ -9,7 +9,8 @@ import {
   Marker
 } from "react-google-maps";
 import GridWrapper from "./../components/GridWrapper";
-import {useEffect} from "react";
+import { useEffect } from "react";
+import HeadSEO from "./../components/HeadSEO";
 
 const MyMapComponent = withScriptjs(
   withGoogleMap(props => (
@@ -28,9 +29,13 @@ export default function Contacto() {
   }, []);
   return (
     <GridWrapper>
-      {/* <Head>
-        <title>Antítesis Films | Contacto</title>
-      </Head> */}
+      <HeadSEO
+        title={"Antítesis Films | Contacto"}
+        desc={`En Antítesis nos interesa conocer a más personas con 
+        quienes crecer nuestros proyectos. También nos interesa conocer, 
+        crear y producir propuestas audiovisuales de corte social.`}
+        // canonical={"https://somosantitesis.com/contacto"}
+      />
       <Slide bottom cascade>
         <h2>Contacto</h2>
       </Slide>
@@ -44,15 +49,13 @@ export default function Contacto() {
         <h4>Locación</h4>
       </Slide>
       <MapContainer>
-            <MyMapComponent
-              isMarkerShown
-              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyBNMT9E5lly4Y0u-30nbMCsPSPEdLxlsUk&v=3.exp&libraries=geometry,drawing,places`}
-              loadingElement={<div style={{ height: `100%`, width: `100%` }} />}
-              containerElement={
-                <div style={{ height: `400px`, width: `100%` }} />
-              }
-              mapElement={<div style={{ height: `100%`, width: `100%` }} />}
-            />
+        <MyMapComponent
+          isMarkerShown
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyBNMT9E5lly4Y0u-30nbMCsPSPEdLxlsUk&v=3.exp&libraries=geometry,drawing,places`}
+          loadingElement={<div style={{ height: `100%`, width: `100%` }} />}
+          containerElement={<div style={{ height: `400px`, width: `100%` }} />}
+          mapElement={<div style={{ height: `100%`, width: `100%` }} />}
+        />
       </MapContainer>
       <Slide bottom>
         <p>
