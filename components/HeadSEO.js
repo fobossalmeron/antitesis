@@ -18,7 +18,7 @@ const Meta = props => (
     ) : (
       <meta
         property="og:image"
-        content="https://www.somosantitesis.com/static/assets/img/og/og.jpg"
+        content="https://somosantitesis.com/static/assets/img/og/og.jpg"
       />
     )}
     {props.canonical && <link rel="canonical" href={`${props.canonical}`} />}
