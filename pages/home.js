@@ -7,36 +7,10 @@ import CursorVideo from "./../components/CursorVideo";
 import Proyect from "./../components/Proyect";
 import withSizes from "react-sizes";
 import HeadSEO from "./../components/HeadSEO";
-import ArrowIcon from "./../static/assets/img/arrow.svg";
-
-// import { useInView } from "react-intersection-observer";
-
-// const Trigger = props => {
-//   const [ref, inView, entry] = useInView({
-//     threshold: 0.1,
-//     rootMargin: "0px"
-//   });
-
-//   useEffect(() => {
-//     if (inView) {
-//       props.setAgain(true);
-//       console.log("Trigger in view and again is: " + props.again);
-//     }
-//   }, [inView]);
-
-//   return <TriggerBottom ref={ref} />;
-// };
+import ArrowIcon from "./../static/assets/img/layout/arrow.svg";
 
 const Index = props => {
   const [counter, setCounter] = useState(1);
-  // const [again, setAgain] = useState(false);
-
-  // useEffect(() => {
-  //   console.log("Again was changed and is: " + again);
-  //   var _x = setTimeout(function() {
-  //     setAgain(false);
-  //   }, 200);
-  // }, [again]);
 
   var slides = Object.entries(proyects).map(function(_proyect, index) {
     var currentProyect = _proyect[1];
@@ -73,8 +47,6 @@ const Index = props => {
       />
       {props.isNotMobile ? <CursorVideo counter={counter} /> : null}
       {slides}
-      {/* {!again ? slides : null} */}
-      {/* <Trigger setCounter={setCounter} setAgain={setAgain} again={again} /> */}
       <Counter>
         <Fade>{counter + 1 + "/8"}</Fade>
       </Counter>
@@ -91,19 +63,6 @@ const mapSizesToProps = ({ width }) => ({
 
 export default withSizes(mapSizesToProps)(Index);
 
-// const TriggerBottom = styled.div`
-//   height: calc(100vh - 180px);
-//   width: 100%;
-//   position: relative;
-//   scroll-snap-align: end;
-//   scroll-snap-stop: always;
-//   display: block;
-//   grid-column: 4 / span 7;
-//   @media (max-width: 600px) {
-//     display: none;
-//   }
-// `;
-
 const Arrow = styled.div`
   position: fixed;
   padding-bottom: 2%;
@@ -114,19 +73,19 @@ const Arrow = styled.div`
   z-index: 2;
   opacity: ${props => (props.reveal ? 1 : 0)};
   transition: opacity 0.3s ease;
-  pointer-events:none;
+  pointer-events: none;
   @media (max-width: 1200px) {
     padding-left: 50%;
   }
   @media (max-width: 600px) {
-    display:none;
+    display: none;
   }
   svg {
     width: 50px;
     height: auto;
     display: block;
     margin-bottom: -3px;
-    transform: ${props => props.turned? "rotate(180deg)" : "rotate(0)"};
+    transform: ${props => (props.turned ? "rotate(180deg)" : "rotate(0)")};
   }
 `;
 

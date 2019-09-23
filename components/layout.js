@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styled, { createGlobalStyle } from "styled-components";
 import Header from "./header";
-import Logo from "../static/assets/img/favicon.svg";
+import Logo from "../static/assets/img/layout/favicon.svg";
 import SocialNav from "./SocialNav";
 import Nav from "./Nav";
 
@@ -9,10 +9,6 @@ import { useEffect, useState } from "react";
 
 export default ({ children, title = "Antitesis", changeTheme, visible }) => {
   const [isOpen, setOpen] = useState(false);
-
-  // useEffect(() => {
-  //   document.getElementById("PageWrapper").scrollTop = 0;
-  // }, [children]);
 
   const toggleNav = () => {
     setOpen(!isOpen);
@@ -27,9 +23,7 @@ export default ({ children, title = "Antitesis", changeTheme, visible }) => {
   useEffect(() => {
     if (window.document.title === "Antítesis | Próximamente") {
       hideForLanding = true;
-      // console.log("Is hidden for landing page? " + hideForLanding);
     } else {
-      // console.log("Is hidden for landing page? " + hideForLanding);
     }
     window.scrollTo(0, 0);
   }, [title]);
@@ -65,7 +59,7 @@ export default ({ children, title = "Antitesis", changeTheme, visible }) => {
         </ModeToggler>
 
         <Footer hidden={hideForLanding} isOpen={isOpen}>
-          <SocialNav isOpen={isOpen}/>
+          <SocialNav isOpen={isOpen} />
           <Date>© MMXIX</Date>
         </Footer>
       </PageWrapper>
@@ -88,10 +82,10 @@ const PageWrapper = styled.div`
   background-color: ${props => props.theme.colors.background};
   -webkit-overflow-scrolling: touch;
   @media (max-width: 700px) {
-    padding-top:150px;
+    padding-top: 150px;
   }
   @media (max-width: 550px) {
-    padding-top:110px;
+    padding-top: 110px;
   }
 `;
 
@@ -110,7 +104,7 @@ const ModeToggler = styled.div`
   z-index: 10;
   svg {
     width: 100%;
-    max-width:108px;
+    max-width: 108px;
     path {
       fill: ${props =>
         props.isOpen
@@ -133,7 +127,7 @@ const Footer = styled.footer`
       : props.theme.colors.foreground};
   justify-content: space-between;
   z-index: 10;
-  pointer-events:none;
+  pointer-events: none;
   @media (max-width: 1200px) {
     justify-content: flex-end;
   }
@@ -144,15 +138,15 @@ const Date = styled.div`
   justify-self: flex-end;
   font-size: 1.3em;
   min-width: 100px;
-  text-align:right;
+  text-align: right;
   @media (max-width: 800px) {
-    font-size:1rem;
+    font-size: 1rem;
   }
   @media (max-width: 700px) {
-    font-size:.8rem;
+    font-size: 0.8rem;
   }
   @media (max-width: 500px) {
-    font-size:.6rem;
+    font-size: 0.6rem;
   }
 `;
 

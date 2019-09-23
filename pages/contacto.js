@@ -1,27 +1,8 @@
 import styled from "styled-components";
-import Head from "next/head";
 import Slide from "react-reveal/Slide";
-import Fade from "react-reveal";
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker
-} from "react-google-maps";
 import GridWrapper from "./../components/GridWrapper";
 import { useEffect } from "react";
 import HeadSEO from "./../components/HeadSEO";
-
-const MyMapComponent = withScriptjs(
-  withGoogleMap(props => (
-    <GoogleMap
-      defaultZoom={16}
-      defaultCenter={{ lat: 19.352037, lng: -99.151034 }}
-    >
-      <Marker position={{ lat: 19.352037, lng: -99.151034 }} />
-    </GoogleMap>
-  ))
-);
 
 export default function Contacto() {
   useEffect(() => {
@@ -49,13 +30,13 @@ export default function Contacto() {
         <h4>Locación</h4>
       </Slide>
       <MapContainer>
-        <MyMapComponent
-          isMarkerShown
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyBNMT9E5lly4Y0u-30nbMCsPSPEdLxlsUk&v=3.exp&libraries=geometry,drawing,places`}
-          loadingElement={<div style={{ height: `100%`, width: `100%` }} />}
-          containerElement={<div style={{ height: `400px`, width: `100%` }} />}
-          mapElement={<div style={{ height: `100%`, width: `100%` }} />}
-        />
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1749.4176829720998!2d-99.15144113654632!3d19.35197587113749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ffcdd89a6fab%3A0xe689585110f82cd7!2sEligio%20Villamar%2018%2C%20San%20Diego%20Churubusco%2C%2004120%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX%2C%20Mexico!5e0!3m2!1sen!2ses!4v1569238526835!5m2!1sen!2ses"
+          width="600"
+          height="450"
+          frameBorder="0"
+          allowFullScreen=""
+        ></iframe>
       </MapContainer>
       <Slide bottom>
         <p>
@@ -75,4 +56,7 @@ const MapContainer = styled.div`
   width: 100%;
   grid-column: 4 / span 6;
   margin-bottom: 5%;
+  iframe {
+    border: 0;
+  }
 `;

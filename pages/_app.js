@@ -1,4 +1,3 @@
-import React from "react";
 import App from "next/app";
 import { ThemeProvider } from "styled-components";
 import LoadingBar from "react-top-loading-bar";
@@ -21,13 +20,12 @@ export default class MyApp extends App {
     return new Promise(resolve => setTimeout(resolve, 1500)); //1500
   }
 
-  componentDidUpdate() {
-    // console.log("updated");
-  }
-
   handleRouteComplete = url => {
-    this.LoadingBar.complete();
-    console.log("complete\n\n");
+    var _myself = this;
+    setTimeout(function() {
+      _myself.LoadingBar.complete();
+      console.log("complete");
+    }, 300);
   };
 
   handleRouteStart = url => {
@@ -36,11 +34,13 @@ export default class MyApp extends App {
   };
 
   handleRouteError = (err, url) => {
-    if (err.cancelled) {
-      console.log(`Route to ${url} was cancelled!`);
-    }
-    this.LoadingBar.complete();
-    console.log("complete Error\n\n" + err);
+    setTimeout(function() {
+      if (err.cancelled) {
+        console.log(`Route to ${url} was cancelled!`);
+      }
+      this.LoadingBar.complete();
+      console.log("complete Error\n\n" + err);
+    }, 300);
   };
 
   componentDidMount() {
@@ -64,7 +64,7 @@ export default class MyApp extends App {
     });
 
     // console.log("did mount");
-    // Router.events.on("routeChangeStart", this.handleRouteStart);
+    Router.events.on("routeChangeStart", this.handleRouteStart);
     Router.events.on("routeChangeComplete", this.handleRouteComplete);
     Router.events.on("routeChangeError", this.handleRouteError);
   }
@@ -102,7 +102,6 @@ export default class MyApp extends App {
   // Y la función change theme debe incluír:
   // localStorage.setItem("isDarkMode", !this.state.isDarkMode);
 
-
   changeTheme() {
     this.setState({
       isDarkMode: !this.state.isDarkMode
@@ -112,23 +111,23 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-        <ThemeProvider theme={this.state.isDarkMode ? darkTheme : theme}>
-          <Layout
-            changeTheme={this.changeTheme.bind(this)}
-            visible={this.state.hasLoaded}
-          >
-            <LoadingBar
-              onRef={ref => (this.LoadingBar = ref)}
-              height={8}
-              color={
-                this.state.isDarkMode
-                  ? darkTheme.colors.foreground
-                  : theme.colors.foreground
-              }
-            />
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
+      <ThemeProvider theme={this.state.isDarkMode ? darkTheme : theme}>
+        <Layout
+          changeTheme={this.changeTheme.bind(this)}
+          visible={this.state.hasLoaded}
+        >
+          <LoadingBar
+            onRef={ref => (this.LoadingBar = ref)}
+            height={8}
+            color={
+              this.state.isDarkMode
+                ? darkTheme.colors.foreground
+                : theme.colors.foreground
+            }
+          />
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     );
   }
 }

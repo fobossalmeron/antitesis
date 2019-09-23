@@ -1,6 +1,5 @@
-import Link from "next/link";
-import logo from "../static/logo.svg";
-import soon from "../static/assets/img/soon.svg";
+import logo from "../static/assets/img/layout/logoComplete.svg";
+import soon from "../static/assets/img/layout/soon.svg";
 import styled, { createGlobalStyle } from "styled-components";
 import Head from "next/head";
 
@@ -30,9 +29,7 @@ export default function Landing() {
             ig
           </a>
         </Social>
-        <Date>
-          <Link href="/home">© MMXIX</Link>
-        </Date>
+        <Date>© MMXIX</Date>
         <StylesX />
       </Wrapper>
     </>
@@ -48,7 +45,7 @@ const Wrapper = styled.div`
   height: 100%;
   overflow: hidden;
   text-transform: uppercase;
-  background-color: black;
+  background-color: ${props => props.theme.colors.foreground};
   position: absolute;
   left: 0;
   right: 0;
@@ -84,6 +81,7 @@ const Social = styled.div`
   justify-self: flex-start;
   font-size: 1.5em;
   min-width: 85px;
+  color: white;
   a {
     color: white;
     text-decoration: none;
@@ -97,6 +95,7 @@ const Date = styled.div`
   justify-self: flex-end;
   font-size: 1.5em;
   min-width: 100px;
+  color: white;
   a {
     text-decoration: none;
     color: white;
@@ -140,8 +139,6 @@ const StylesX = createGlobalStyle`
       body {
         margin: 0;
         padding: 0;
-        background-color: black;
-        color: white;
         height: 100vh;
         width: 100%;
         overflow: hidden;

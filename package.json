@@ -3,30 +3,28 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "analyze": "ANALYZE=true yarn build"
   },
   "dependencies": {
     "@svgr/webpack": "^4.3.2",
-    "babel-loader": "^8.0.6",
-    "file-loader": "^4.1.0",
-    "next": "^9.0.2",
-    "next-compose-plugins": "^2.2.0",
-    "next-images": "^1.1.2",
-    "react": "^16.8.6",
+    "next": "^9.0.6",
+    "react": "^16.9.0",
     "react-cursor-position": "^3.0.3",
-    "react-dom": "^16.8.6",
-    "react-google-maps": "^9.4.5",
+    "react-dom": "^16.9.0",
     "react-intersection-observer": "^8.24.1",
-    "react-loadable": "^5.5.0",
     "react-on-screen": "^2.1.1",
     "react-player": "^1.11.1",
     "react-reveal": "^1.2.2",
     "react-sizes": "^2.0.0",
     "react-top-loading-bar": "^1.1.1",
-    "styled-components": "^5.0.0-beta.8",
-    "url-loader": "^2.1.0"
+    "styled-components": "^5.0.0-beta.8"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.10.6"
+    "babel-plugin-styled-components": "^1.10.6",
+    "@next/bundle-analyzer": "^9.0.6"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }

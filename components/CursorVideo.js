@@ -1,5 +1,4 @@
-
-import FilePlayer from "react-player";
+import FilePlayer from "react-player/lib/players/FilePlayer";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import { useEffect, useState, useRef } from "react";

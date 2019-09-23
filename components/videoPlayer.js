@@ -1,16 +1,9 @@
 import React, { useState } from "react";
-import VimeoPlayer from "react-player";
+import dynamic from "next/dynamic";
 import styled, { css, keyframes } from "styled-components";
-import Loadable from "react-loadable";
-import Loader from "./loader";
 
-const ThePlayer = Loadable({
-  loader: () => import("react-player"),
-  loading: Loader,
-  render(loaded, props) {
-    let Component = VimeoPlayer;
-    return <Component {...props} />;
-  }
+const ThePlayer = dynamic(import("react-player/lib/players/Vimeo"), {
+  loading: () => <p>Loading player...</p>
 });
 
 function VideoPlayer(props) {
@@ -37,36 +30,36 @@ function VideoPlayer(props) {
 
   return (
     <VideoWrapper ratio={props.ratio} onMouseOver={preloadVideoPlayer}>
-        <Clicker onClick={() => handlePlay()} hideSvg={isPlaying}>
-          {isPlaying ? (
-            <PauseButton id="paused">PAUSE</PauseButton>
-          ) : (
-            <PlayButton>PLAY</PlayButton>
-          )}
-        </Clicker>
-        <Fader hide={isPlaying} />
-        <OverStill
-          style={{ backgroundImage: `url(${props.still})` }}
-          hide={!isInitial}
-          onClick={() => handlePlay(true)}
-        />
-        {!isInitial && (
-          <ThePlayer
-            playing={isPlaying}
-            url={props.url}
-            controls={false}
-            height="auto"
-            width="100%"
-            onEnded={restoreVideo}
-            onPause={pauseVideo}
-            onPlay={() => handlePlay(true)}
-            config={{
-              vimeo: {
-                preload: true
-              }
-            }}
-          />
+      <Clicker onClick={() => handlePlay()} hideSvg={isPlaying}>
+        {isPlaying ? (
+          <PauseButton id="paused">PAUSE</PauseButton>
+        ) : (
+          <PlayButton>PLAY</PlayButton>
         )}
+      </Clicker>
+      <Fader hide={isPlaying} />
+      <OverStill
+        style={{ backgroundImage: `url(${props.still})` }}
+        hide={!isInitial}
+        onClick={() => handlePlay(true)}
+      />
+      {!isInitial && (
+        <ThePlayer
+          playing={isPlaying}
+          url={props.url}
+          controls={false}
+          height="auto"
+          width="100%"
+          onEnded={restoreVideo}
+          onPause={pauseVideo}
+          onPlay={() => handlePlay(true)}
+          config={{
+            vimeo: {
+              preload: true
+            }
+          }}
+        />
+      )}
     </VideoWrapper>
   );
 }
