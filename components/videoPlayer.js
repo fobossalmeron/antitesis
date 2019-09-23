@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styled, { css, keyframes } from "styled-components";
 
@@ -11,8 +11,10 @@ function VideoPlayer(props) {
   const [isInitial, setInitial] = useState(true);
 
   function handlePlay(bool = !isPlaying) {
-    setPlaying(bool);
     setInitial(false);
+    const playDelay = setTimeout(function() {
+      setPlaying(bool);
+    }, 300);
   }
 
   function pauseVideo() {

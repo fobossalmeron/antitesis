@@ -3,11 +3,8 @@
 # Errors
 
 - Videos doble click en mobile
+- Meter meta images de proyectos
 
 # Cambios y faltantes:
 
 - Si pueden los videos comprimirse más -> tamaño incorrecto / me falta unv ideo
-
-# Futuro
-
-[MouseAnimation](https://levelup.gitconnected.com/blazing-fast-react-animations-with-and-without-redux-762b6152b8ef)

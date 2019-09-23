@@ -44,7 +44,7 @@ const Index = props => {
         desde una perspectiva que cuestiona.`}
         // canonical={"https://somosantitesis.com/"}
       />
-      {props.isNotMobile ? <CursorVideo counter={counter} /> : null}
+      {props.isNotMobile && <CursorVideo counter={counter} />}
       {slides}
       <Counter>
         <Fade>{counter + 1 + "/8"}</Fade>

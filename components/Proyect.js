@@ -75,7 +75,7 @@ const Proyect = props => {
               <h4>Ver Más</h4>
             </Link>
           </Fade>
-          {props.isMobile ? (
+          {props.isMobile && (
             <StillContainer>
               <Fade when={inView}>
                 <Still
@@ -85,8 +85,6 @@ const Proyect = props => {
                 />
               </Fade>
             </StillContainer>
-          ) : (
-            ""
           )}
         </Additional>
       </Info>
