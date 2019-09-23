@@ -2,7 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import { proyects } from "../portafolio/proyects.json";
-import ReactCursorPosition from "react-cursor-position";
 import CursorVideo from "./../components/CursorVideo";
 import Proyect from "./../components/Proyect";
 import withSizes from "react-sizes";
@@ -111,7 +110,7 @@ const Counter = styled.div`
   }
 `;
 
-const HomeWrapper = styled(ReactCursorPosition)`
+const HomeWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   -webkit-overflow-scrolling: touch;
