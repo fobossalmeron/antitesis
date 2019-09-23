@@ -42,7 +42,7 @@ const Index = props => {
         desc={`Somos una casa productora de cine, videoclips y formatos web, que se caracterizan 
         por ser la Antítesis de la agenda global, resultando en ficciones y documentales auténticos 
         desde una perspectiva que cuestiona.`}
-        // canonical={"https://somosantitesis.com/"}
+        canonical={"https://somosantitesis.com/"}
       />
       {props.isNotMobile && <CursorVideo counter={counter} />}
       {slides}

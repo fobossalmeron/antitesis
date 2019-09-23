@@ -21,7 +21,6 @@ const Meta = props => (
         content="https://www.somosantitesis.com/static/assets/img/og/og.jpg"
       />
     )}
-    {props.image && <meta name="twitter:image" content={`${props.image}`} />}
     {props.canonical && <link rel="canonical" href={`${props.canonical}`} />}
   </Head>
 );

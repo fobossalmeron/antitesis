@@ -15,7 +15,7 @@ export default function Contacto() {
         desc={`En Antítesis nos interesa conocer a más personas con 
         quienes crecer nuestros proyectos. También nos interesa conocer, 
         crear y producir propuestas audiovisuales de corte social.`}
-        // canonical={"https://somosantitesis.com/contacto"}
+        canonical={"https://somosantitesis.com/contacto"}
       />
       <Slide bottom cascade>
         <h2>Contacto</h2>

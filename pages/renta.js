@@ -11,7 +11,7 @@ export default function Renta() {
         desc={
           "Contamos con equipo de cámara y de producción a disposición para tus proyectos."
         }
-        // canonical={"https://somosantitesis.com/renta"}
+        canonical={"https://somosantitesis.com/renta"}
       />
       <Slide bottom cascade>
         <h2>Renta</h2>

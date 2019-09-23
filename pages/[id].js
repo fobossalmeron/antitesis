@@ -66,7 +66,7 @@ const Post = ({ proyect, query }) => {
           proyect.title2 !== undefined ? proyect.title2 : ""
         }`}
         desc={proyect.meta}
-        // canonical={`https://somosantitesis.com/${query.id}`}
+        canonical={`https://somosantitesis.com/${query.id}`}
       />
       <Head>
         <title>
