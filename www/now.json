@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "alias": ["www.somosantitesis.com"],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "status": 301,
+      "headers": { "Location": "https://somosantitesis.com/$1" }
+    }
+  ]
+}

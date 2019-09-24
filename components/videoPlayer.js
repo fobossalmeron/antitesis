@@ -2,19 +2,18 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styled, { css, keyframes } from "styled-components";
 
-const ThePlayer = dynamic(import("react-player/lib/players/Vimeo"), {
-  loading: () => <p>Loading player...</p>
-});
+const ThePlayer = dynamic(import("react-player/lib/players/Vimeo"));
 
 function VideoPlayer(props) {
   const [isPlaying, setPlaying] = useState(false);
   const [isInitial, setInitial] = useState(true);
 
+  useEffect(() => {
+    preloadVideoPlayer();
+  }, []);
+
   function handlePlay(bool = !isPlaying) {
-    setInitial(false);
-    const playDelay = setTimeout(function() {
-      setPlaying(bool);
-    }, 300);
+    setPlaying(bool);
   }
 
   function pauseVideo() {
@@ -23,15 +22,15 @@ function VideoPlayer(props) {
 
   function restoreVideo() {
     setPlaying(false);
-    setInitial(true);
   }
 
   function preloadVideoPlayer() {
-    ThePlayer.preload();
+    setInitial(false);
+    console.log("should render player");
   }
 
   return (
-    <VideoWrapper ratio={props.ratio} onMouseOver={preloadVideoPlayer}>
+    <VideoWrapper ratio={props.ratio}>
       <Clicker onClick={() => handlePlay()} hideSvg={isPlaying}>
         {isPlaying ? (
           <PauseButton id="paused">PAUSE</PauseButton>
@@ -42,7 +41,7 @@ function VideoPlayer(props) {
       <Fader hide={isPlaying} />
       <OverStill
         style={{ backgroundImage: `url(${props.still})` }}
-        hide={!isInitial}
+        hide={isPlaying}
         onClick={() => handlePlay(true)}
       />
       {!isInitial && (

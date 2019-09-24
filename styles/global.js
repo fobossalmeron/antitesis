@@ -45,20 +45,11 @@ let theStyles = `
     font-size: 16px;
     height: 100vh;
     box-sizing: border-box;
-    // cursor: url(/static/assets/img/cursor.svg) 0 0, auto; /* Legacy */
-    // cursor: url(/static/assets/img/cursor.svg) 0 0, auto; /* FF */
-    // cursor: -webkit-image-set(url(/static/assets/img/cursor.svg) 1x, url(/static/assets/img/cursorbig.svg) 2x) 0 0, auto; /* Webkit */
   }
 
   @media screen and (max-width: 1330px) {
     html{font-size:14px};
   }
-  // @media screen and (max-width: 700px) {
-  //   html{font-size:12px};
-  // }
-  // @media screen and (max-width: 550px) {
-  //     html{font-size:10px};
-  //   }
 
   *,
   *:before,
