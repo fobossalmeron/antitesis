@@ -1,9 +1,9 @@
 import App from "next/app";
 import { ThemeProvider } from "styled-components";
 import LoadingBar from "react-top-loading-bar";
-import Layout from "../components/layout";
-import theme from "../styles/theme";
-import darkTheme from "../styles/dark";
+import Layout from "components/layout";
+import theme from "styles/theme";
+import darkTheme from "styles/dark";
 import Router from "next/router";
 
 export default class MyApp extends App {
@@ -24,13 +24,11 @@ export default class MyApp extends App {
     var _myself = this;
     setTimeout(function() {
       _myself.LoadingBar.complete();
-      console.log("complete");
     }, 300);
   };
 
   handleRouteStart = url => {
     this.LoadingBar.continuousStart();
-    console.log("start");
   };
 
   handleRouteError = (err, url) => {
@@ -39,7 +37,7 @@ export default class MyApp extends App {
         console.log(`Route to ${url} was cancelled!`);
       }
       this.LoadingBar.complete();
-      console.log("complete Error\n\n" + err);
+      console.log("complete Error " + err);
     }, 300);
   };
 
@@ -63,44 +61,16 @@ export default class MyApp extends App {
       }
     });
 
-    // console.log("did mount");
     Router.events.on("routeChangeStart", this.handleRouteStart);
     Router.events.on("routeChangeComplete", this.handleRouteComplete);
     Router.events.on("routeChangeError", this.handleRouteError);
   }
 
   componentWillUnmount() {
-    // console.log("will unmount");
     Router.events.off("routeChangeStart", this.handleRouteStart);
     Router.events.off("routeChangeComplete", this.handleRouteComplete);
     Router.events.off("routeChangeError", this.handleRouteError);
   }
-
-  // Esto solo vale la pena si vamos a implementar más cookies,
-  // habrá que tripear al respecto
-  //
-  // componentWillMount(){
-  //   this.setState({
-  //     isDarkMode: this.getLocalStorage()
-  //   });
-  // }
-
-  // getLocalStorage() {
-  //   if (typeof window !== "undefined") {
-  //     console.log("we are running on the client");
-  //     let stored = localStorage.getItem("isDarkMode");
-  //     if (!stored){
-  //       return false
-  //     }
-  //     return stored === "true"? true : false;
-  //   } else {
-  //     console.log("we are running on the server");
-  //     return false;
-  //   }
-  // }
-
-  // Y la función change theme debe incluír:
-  // localStorage.setItem("isDarkMode", !this.state.isDarkMode);
 
   changeTheme() {
     this.setState({

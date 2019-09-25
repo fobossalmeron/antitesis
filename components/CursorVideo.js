@@ -26,7 +26,6 @@ const CursorVideo = props => {
 
   useEffect(() => {
     // Gsap
-
     window.addEventListener("mousemove", onMouseMove);
     addStateChangeListener(state => {
       TweenLite.to(videoRef.current, 0.1, {
@@ -37,7 +36,6 @@ const CursorVideo = props => {
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       removeAllListeners();
-      console.log("listeener  remove");
     };
   }, []);
 

@@ -4,11 +4,14 @@ import Header from "./header";
 import Logo from "../static/assets/img/layout/favicon.svg";
 import SocialNav from "./SocialNav";
 import Nav from "./Nav";
+import { initGA, logPageView } from "utils/analytics";
+import { useRouter } from "next/router";
 
 import { useEffect, useState } from "react";
 
 export default ({ children, title = "Antitesis", changeTheme, visible }) => {
   const [isOpen, setOpen] = useState(false);
+  const router = useRouter();
 
   const toggleNav = () => {
     setOpen(!isOpen);
@@ -18,13 +21,16 @@ export default ({ children, title = "Antitesis", changeTheme, visible }) => {
     setOpen(false);
   };
 
-  var hideForLanding = false;
+  useEffect(() => {
+    if (!window.GA_INITIALIZED) {
+      initGA();
+      window.GA_INITIALIZED = true;
+    }
+    logPageView();
+    document.getElementById("PageWrapper").scrollTop = 0;
+  }, [router.route]);
 
   useEffect(() => {
-    if (window.document.title === "Antítesis | Próximamente") {
-      hideForLanding = true;
-    } else {
-    }
     window.scrollTo(0, 0);
   }, [title]);
 
@@ -41,24 +47,15 @@ export default ({ children, title = "Antitesis", changeTheme, visible }) => {
       </Head>
       <Styles />
       <PageWrapper id="PageWrapper" visible={visible}>
-        <Header
-          hidden={hideForLanding}
-          toggleNav={toggleNav}
-          closeNav={closeNav}
-          isOpen={isOpen}
-        />
+        <Header toggleNav={toggleNav} closeNav={closeNav} isOpen={isOpen} />
         <Nav toggleNav={toggleNav} closeNav={closeNav} isOpen={isOpen} />
 
         {children}
-        <ModeToggler
-          isOpen={isOpen}
-          hidden={hideForLanding}
-          onClick={() => doChangeTheme()}
-        >
+        <ModeToggler isOpen={isOpen} onClick={() => doChangeTheme()}>
           <Logo />
         </ModeToggler>
 
-        <Footer hidden={hideForLanding} isOpen={isOpen}>
+        <Footer isOpen={isOpen}>
           <SocialNav isOpen={isOpen} />
           <Date>© MMXIX</Date>
         </Footer>

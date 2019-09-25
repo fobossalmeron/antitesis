@@ -51,6 +51,7 @@ const Wrapper = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
+  z-index: 12;
   @media (max-width: 1000px) {
     font-size: 0.8rem;
   }

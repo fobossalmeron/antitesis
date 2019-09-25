@@ -1,4 +1,5 @@
 import Head from "next/head";
+
 const Meta = props => (
   <Head>
     <title>{props.title}</title>
@@ -24,4 +25,5 @@ const Meta = props => (
     {props.canonical && <link rel="canonical" href={`${props.canonical}`} />}
   </Head>
 );
+
 export default Meta;

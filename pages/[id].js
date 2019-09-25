@@ -4,10 +4,10 @@ import Link from "next/link";
 import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
 import ErrorPage from "./_error";
-import GridWrapper from "./../components/GridWrapper";
-import VideoPlayer from "../components/videoPlayer";
+import GridWrapper from "components/GridWrapper";
+import VideoPlayer from "components/videoPlayer";
 import { useEffect } from "react";
-import HeadSEO from "./../components/HeadSEO";
+import HeadSEO from "components/HeadSEO";
 
 import { proyects } from "../portafolio/proyects.json";
 
@@ -67,6 +67,7 @@ const Post = ({ proyect, query }) => {
         }`}
         desc={proyect.meta}
         canonical={`https://somosantitesis.com/${query.id}`}
+        image={`https://somosantitesis.com/static/assets/img/og/${query.id}.jpg`}
       />
       <Head>
         <title>

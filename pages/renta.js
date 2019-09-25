@@ -1,9 +1,12 @@
 import Slide from "react-reveal/Slide";
-import Head from "next/head";
-import GridWrapper from "./../components/GridWrapper";
-import HeadSEO from "./../components/HeadSEO";
+import GridWrapper from "components/GridWrapper";
+import HeadSEO from "components/HeadSEO";
+import { logEvent } from "utils/analytics";
 
 export default function Renta() {
+  const logDownload = () => {
+    logEvent("Downloaded Renta PDF", "User clicked on PDF link on /renta");
+  };
   return (
     <GridWrapper>
       <HeadSEO
@@ -22,7 +25,7 @@ export default function Renta() {
           Contamos con equipo de cámara y de producción a disposición para tus
           proyectos.
         </p>
-        <h4>
+        <h4 onClick={logDownload}>
           <a target="_blank" href="../static/assets/pdf/Antitesis_renta.pdf">
             Ver PDF
           </a>

@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import Slide from "react-reveal/Slide";
-import GridWrapper from "./../components/GridWrapper";
-import { useEffect } from "react";
-import HeadSEO from "./../components/HeadSEO";
+import GridWrapper from "components/GridWrapper";
+import HeadSEO from "components/HeadSEO";
+import { logEvent } from "utils/analytics";
 
 export default function Contacto() {
-  useEffect(() => {
-    document.getElementById("PageWrapper").scrollTop = 0;
-  }, []);
+  const contactClicked = () => {
+    logEvent("Clicked on contact link", "User clicked on link -Contactanos-");
+  };
+
   return (
     <GridWrapper>
       <HeadSEO
@@ -43,7 +44,7 @@ export default function Contacto() {
           Si deseas más información de nuestros servicios o te interesa sumarte
           a nuestro equipo.
         </p>
-        <h4>
+        <h4 onClick={contactClicked}>
           <a href="mailto:info@somosantitesis.com">Contáctanos</a>
         </h4>
       </Slide>

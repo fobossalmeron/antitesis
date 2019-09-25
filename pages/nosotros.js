@@ -1,15 +1,10 @@
 import styled from "styled-components";
 import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
-import Head from "next/head";
-import GridWrapper from "./../components/GridWrapper";
-import { useEffect } from "react";
-import HeadSEO from "./../components/HeadSEO";
+import GridWrapper from "components/GridWrapper";
+import HeadSEO from "components/HeadSEO";
 
 export default function Nosotros() {
-  useEffect(() => {
-    document.getElementById("PageWrapper").scrollTop = 0;
-  }, []);
   return (
     <GridWrapper>
       <HeadSEO

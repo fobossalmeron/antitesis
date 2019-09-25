@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
-import { proyects } from "../portafolio/proyects.json";
-import CursorVideo from "./../components/CursorVideo";
-import Proyect from "./../components/Proyect";
+import { proyects } from "portafolio/proyects.json";
+import CursorVideo from "components/CursorVideo";
+import Proyect from "components/Proyect";
 import withSizes from "react-sizes";
-import HeadSEO from "./../components/HeadSEO";
+import HeadSEO from "components/HeadSEO";
 import ArrowIcon from "./../static/assets/img/layout/arrow.svg";
 
 const Index = props => {

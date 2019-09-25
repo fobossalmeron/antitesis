@@ -26,7 +26,6 @@ function VideoPlayer(props) {
 
   function preloadVideoPlayer() {
     setInitial(false);
-    console.log("should render player");
   }
 
   return (

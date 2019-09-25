@@ -9,7 +9,7 @@ let theStyles = `
     right:0;
     bottom:0;
     top:0;
-    background-color: black;
+    background-color: ${Theme.colors.foreground};
     transition: all .4s ease-in;
   }
   #outsideLoader {
@@ -19,7 +19,7 @@ let theStyles = `
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    fill: white;
+    fill: ${Theme.colors.background};
     z-index: 100;
     transition: opacity .3s ease; 
   }
