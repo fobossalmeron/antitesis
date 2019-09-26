@@ -38,7 +38,7 @@ const Index = props => {
   return (
     <HomeWrapper isEnabled={!props.isMobile} className="wrapperEnd">
       <HeadSEO
-        title={"Antitesis Films | Inicio"}
+        title={"Antitesis Films"}
         desc={`Somos una casa productora de cine, videoclips y formatos web, que se caracterizan 
         por ser la Antítesis de la agenda global, resultando en ficciones y documentales auténticos 
         desde una perspectiva que cuestiona.`}
