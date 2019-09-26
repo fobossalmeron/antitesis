@@ -14,6 +14,9 @@ const Meta = props => (
     <meta property="og:site_name" content="Antitesis Films" />
     <meta property="og:url" content={`${props.canonical}`} />
     <meta property="og:locale" content="es_MX" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
     {props.image ? (
       <meta property="og:image" content={`${props.image}`} />
     ) : (
