@@ -7,7 +7,7 @@ export default function Header(props) {
   return (
     <>
       <TopHeader hidden={props.hidden} isOpen={props.isOpen}>
-        <Link href="/">
+        <Link href="/" passHref>
           <Logotype>
             ANTÍTESIS
             <br /> FILMS

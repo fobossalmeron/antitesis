@@ -9,7 +9,7 @@ export default function MobileNav(props) {
       <NavWrapper open={props.isOpen}>
         <Navs>
           <MobileNavList onClick={props.closeNav}>
-            <ActiveLink href="/home">
+            <ActiveLink href="/">
               <NavLink>
                 <span>Home</span>
               </NavLink>
@@ -45,7 +45,7 @@ const Navs = styled.div`
 `;
 
 const NavLink = styled.a`
-  margin-bottom:10px;
+  margin-bottom: 10px;
   span {
     position: relative;
     &:after {
