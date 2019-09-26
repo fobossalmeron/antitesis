@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Fade from "react-reveal/Fade";
 import { proyects } from "portafolio/proyects.json";
 import CursorVideo from "components/CursorVideo";
@@ -37,6 +37,7 @@ const Index = props => {
 
   return (
     <HomeWrapper isEnabled={!props.isMobile} className="wrapperEnd">
+      <GlobalStyle />
       <HeadSEO
         title={"Antitesis Films"}
         desc={`Somos una casa productora de cine, videoclips y formatos web, que se caracterizan 
@@ -55,6 +56,12 @@ const Index = props => {
     </HomeWrapper>
   );
 };
+
+const GlobalStyle = createGlobalStyle`
+  #PageWrapper {
+    overflow: hidden;
+  }
+`;
 
 const mapSizesToProps = ({ width }) => ({
   isNotMobile: width > 1200
@@ -85,6 +92,9 @@ const Arrow = styled.div`
     display: block;
     margin-bottom: -3px;
     transform: ${props => (props.turned ? "rotate(180deg)" : "rotate(0)")};
+    * {
+      stroke: ${props => props.theme.colors.foreground};
+    }
   }
 `;
 
@@ -117,7 +127,9 @@ const HomeWrapper = styled.div`
   position: relative;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
-  padding: 180px 4% 0 4%;
+  padding: 0 4%;
+  margin-top: 180px;
+  margin-bottom: 5%;
   position: absolute;
   left: 0;
   right: 0;
@@ -137,7 +149,7 @@ const HomeWrapper = styled.div`
   }
   @media (max-width: 400px) {
     grid-template-columns: 0.2fr 1fr 1fr 1fr 1fr 0.2fr;
-    padding-top: 70px;
+    margin-top: 70px;
     padding-bottom: 100px;
   }
 `;

@@ -39,14 +39,13 @@ export default function SocialNav({ isOpen, menuNav }) {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.instagram.com/somos.antitesis/"
+        href="https://vimeo.com/antitesisfilms"
       >
         <Vm />
       </a>
     </Social>
   );
 }
-
 
 const Social = styled.div`
   align-self: flex-end;
@@ -95,8 +94,8 @@ const Social = styled.div`
     display: ${props => (props.menuNav ? "flex" : "none")};
     grid-column: 4 / span 9;
     margin-top: 25px;
-    a{
-      pointer-events:${props => (props.isOpen ? "auto" : "none")};
+    a {
+      pointer-events: ${props => (props.isOpen ? "auto" : "none")};
     }
   }
 `;
