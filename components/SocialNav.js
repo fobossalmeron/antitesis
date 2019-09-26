@@ -13,13 +13,14 @@ export default function SocialNav({ isOpen, menuNav }) {
         rel="noopener noreferrer"
         href="https://www.facebook.com/somos.antitesis"
       >
+        facebook
         <Fb />
       </a>
       {/* <a
         target="_blank"
         rel="noopener noreferrer"
         href="https://www.instagram.com/somos.antitesis/"
-      >
+      >twitter
         <Tw />
       </a> */}
       <a
@@ -27,6 +28,7 @@ export default function SocialNav({ isOpen, menuNav }) {
         rel="noopener noreferrer"
         href="https://www.instagram.com/somos.antitesis/"
       >
+        instagram
         <Ig />
       </a>
       <a
@@ -34,6 +36,7 @@ export default function SocialNav({ isOpen, menuNav }) {
         rel="noopener noreferrer"
         href="https://www.youtube.com/channel/UC4FaZ7lsNEeAOzAKaAJKUXA"
       >
+        youtube
         <Yt />
       </a>
       <a
@@ -41,6 +44,7 @@ export default function SocialNav({ isOpen, menuNav }) {
         rel="noopener noreferrer"
         href="https://vimeo.com/antitesisfilms"
       >
+        vimeo
         <Vm />
       </a>
     </Social>
@@ -58,6 +62,7 @@ const Social = styled.div`
     color: inherit;
     text-decoration: none;
     pointer-events: auto;
+    font-size: 0;
   }
   svg {
     width: 28px;
