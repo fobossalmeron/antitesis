@@ -154,6 +154,7 @@ const ProyectWrapper = styled.section`
     font-size: 3.2rem;
     grid-row: 1;
     white-space: nowrap;
+    letter-spacing: 1px;
   }
   h4 {
     grid-column: 1 / span 7;
@@ -197,14 +198,14 @@ const ProyectWrapper = styled.section`
   }
   @media (max-width: 660px) {
     h2 {
-      font-size: 2.2rem;
-    }
-    h3 {
       font-size: 2rem;
     }
-    /* h4 {
-      font-size: 0.8rem;
-    } */
+    h3 {
+      font-size: 1.8rem;
+    }
+    h4 {
+      font-size: 0.9rem;
+    }
   }
   @media (max-width: 600px) {
     height: auto;

@@ -69,6 +69,21 @@ const MobileNavList = styled.nav`
   flex-direction: column;
   display: flex;
   text-transform: uppercase;
+  @media (max-width: 900px) {
+    a {
+      padding-bottom: 2%;
+    }
+  }
+  @media (max-width: 900px) {
+    a {
+      font-size: 2rem;
+    }
+  }
+  @media (max-width: 450px) {
+    a {
+      font-size: 1.5rem;
+    }
+  }
 `;
 
 const NavTrigger = styled.div`
@@ -134,21 +149,6 @@ const NavWrapper = styled.div`
   color: ${props => props.theme.colors.background};
   pointer-events: none;
   transition: opacity 0.3s ease-in;
-  @media (max-width: 900px) {
-    a {
-      padding-bottom: 2%;
-    }
-  }
-  @media (max-width: 900px) {
-    a {
-      font-size: 2rem;
-    }
-  }
-  @media (max-width: 450px) {
-    a {
-      font-size: 1.5rem;
-    }
-  }
   a {
     text-decoration: none;
     color: inherit;

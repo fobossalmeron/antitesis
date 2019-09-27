@@ -116,7 +116,6 @@ const Counter = styled.div`
   left: 0;
   z-index: 2;
   background-color: ${props => props.theme.colors.background};
-  /* width: 100%; */
   width: calc(100% - 10px);
   margin-right: 10px;
   @media (max-width: 1200px) {
@@ -140,8 +139,6 @@ const HomeWrapper = styled.div`
   padding: 0 4%;
   padding-top: 180px;
   padding-bottom: 5%;
-  /* margin-top: 180px; */
-  /* margin-bottom: 5%; */
   position: absolute;
   left: 0;
   right: 0;

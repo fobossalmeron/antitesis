@@ -1,4 +1,15 @@
 {
   "name": "antitesis",
-  "version": 2
+  "version": 2,
+  "routes": [
+    {
+      "src": "/(.*)/",
+      "status": 301,
+      "headers": { "Location": "/$1" },
+      "continue": true
+    },
+    { "handle": "filesystem" },
+    { "src": "/robots.txt", "dest": "/static/robots.txt" }
+  ],
+  "builds": [{ "src": "**/*.js", "use": "@now/static" }]
 }

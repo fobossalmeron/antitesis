@@ -126,6 +126,9 @@ const Clicker = styled.div`
     color: white;
     font-size: 3.2rem;
     letter-spacing: 1px;
+    @media (max-width: 500px) {
+      font-size: 2.2rem;
+    }
   }
 `;
 
