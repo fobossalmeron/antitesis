@@ -78,6 +78,20 @@ const PageWrapper = styled.div`
   color: ${props => props.theme.colors.foreground};
   background-color: ${props => props.theme.colors.background};
   -webkit-overflow-scrolling: touch;
+  -moz-scrollbar-color: ${props =>
+    props.theme.colors.foreground + " " + props.theme.colors.background};
+  scrollbar-width: thin;
+  &::-webkit-scrollbar-track {
+    background-color: ${props => props.theme.colors.background};
+  }
+  &::-webkit-scrollbar {
+    width: 7px;
+    background-color: ${props => props.theme.colors.background};
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${props => props.theme.colors.foreground};
+    border: none;
+  }
   @media (max-width: 700px) {
     padding-top: 150px;
   }

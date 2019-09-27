@@ -139,7 +139,7 @@ const ProyectWrapper = styled.section`
   grid-template-rows: auto auto auto;
   align-items: flex-start;
   position: relative;
-  height: calc(100vh - 280px);
+  height: calc(100vh - 180px);
   scroll-snap-align: end;
   scroll-snap-stop: always;
   z-index: 1;

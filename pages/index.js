@@ -60,6 +60,14 @@ const Index = props => {
 const GlobalStyle = createGlobalStyle`
   #PageWrapper {
     overflow: hidden;
+    &::-webkit-scrollbar-track {
+    }
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: ${props => props.theme.colors.background};
+    }
   }
 `;
 
@@ -108,7 +116,9 @@ const Counter = styled.div`
   left: 0;
   z-index: 2;
   background-color: ${props => props.theme.colors.background};
-  width: 100%;
+  /* width: 100%; */
+  width: calc(100% - 10px);
+  margin-right: 10px;
   @media (max-width: 1200px) {
     padding-left: 4%;
   }
@@ -128,13 +138,26 @@ const HomeWrapper = styled.div`
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   padding: 0 4%;
-  margin-top: 180px;
-  margin-bottom: 5%;
+  padding-top: 180px;
+  padding-bottom: 5%;
+  /* margin-top: 180px; */
+  /* margin-bottom: 5%; */
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
+  &::-webkit-scrollbar-track {
+    background-color: ${props => props.theme.colors.background};
+  }
+  &::-webkit-scrollbar {
+    width: 7px;
+    background-color: ${props => props.theme.colors.background};
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${props => props.theme.colors.foreground};
+    border: none;
+  }
   @media (max-width: 1000px) {
     grid-template-columns: repeat(6, 1fr);
   }
@@ -149,7 +172,8 @@ const HomeWrapper = styled.div`
   }
   @media (max-width: 400px) {
     grid-template-columns: 0.2fr 1fr 1fr 1fr 1fr 0.2fr;
-    margin-top: 70px;
+    padding-top: 70px;
+    /* margin-top: 70px; */
     padding-bottom: 100px;
   }
 `;

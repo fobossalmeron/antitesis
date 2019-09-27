@@ -49,7 +49,8 @@ const TopHeader = styled.header`
   letter-spacing: 0.05rem;
   font-size: 1.3rem;
   position: fixed;
-  width: 100%;
+  width: calc(100% - 10px);
+  margin-right: 10px;
   top: 0;
   left: 0;
   padding: 2% 4% 2% 4%;
