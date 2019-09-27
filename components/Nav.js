@@ -57,10 +57,10 @@ const NavLink = styled.a`
       position: absolute;
       transition: 0.2s ease all;
       background-color: ${props =>
-        props.active ? props.theme.colors.background : "transparent"};
+        props.active ? props.theme.colors.foreground : "transparent"};
     }
     &:hover::after {
-      background-color: ${props => props.theme.colors.background};
+      background-color: ${props => props.theme.colors.foreground};
     }
   }
 `;
@@ -101,10 +101,11 @@ const NavTrigger = styled.div`
     content: " ";
     height: 100%;
     width: 4px;
-    background-color: ${props =>
+    /* background-color: ${props =>
       props.open
         ? props.theme.colors.background
-        : props.theme.colors.foreground};
+        : props.theme.colors.foreground}; */
+    background-color: ${props => props.theme.colors.foreground};
     position: absolute;
     left: 0;
     top: 0;
@@ -145,8 +146,8 @@ const NavWrapper = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  background-color: ${props => props.theme.colors.foreground};
-  color: ${props => props.theme.colors.background};
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.foreground};
   pointer-events: none;
   transition: opacity 0.3s ease-in;
   a {

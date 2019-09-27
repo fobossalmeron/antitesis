@@ -19,7 +19,6 @@ const NavTriggerMobile = styled.div`
   position: fixed;
   right: 0;
   top: 0;
-  /* margin-top: calc(2% + 4px); */
   margin-top: 34px;
   margin-right: 4%;
   z-index: 13;
@@ -28,10 +27,11 @@ const NavTriggerMobile = styled.div`
     content: " ";
     height: 3px;
     width: 100%;
-    background-color: ${props =>
+    /* background-color: ${props =>
       props.open
         ? props.theme.colors.background
-        : props.theme.colors.foreground};
+        : props.theme.colors.foreground}; */
+    background-color: ${props => props.theme.colors.foreground};
     position: absolute;
     right: 0px;
     top: 0px;

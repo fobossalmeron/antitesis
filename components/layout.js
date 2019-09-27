@@ -117,10 +117,11 @@ const ModeToggler = styled.div`
     width: 100%;
     max-width: 108px;
     path {
-      fill: ${props =>
+      /* fill: ${props =>
         props.isOpen
           ? props.theme.colors.background
-          : props.theme.colors.foreground};
+          : props.theme.colors.foreground}; */
+     fill: ${props => props.theme.colors.foreground};
     }
   }
 `;
@@ -132,10 +133,11 @@ const Footer = styled.footer`
   left: 0;
   padding: 0 4% 2% 4%;
   width: 100%;
-  color: ${props =>
+  /* color: ${props =>
     props.isOpen
       ? props.theme.colors.background
-      : props.theme.colors.foreground};
+      : props.theme.colors.foreground}; */
+  color: ${props => props.theme.colors.foreground};
   justify-content: space-between;
   z-index: 10;
   pointer-events: none;

@@ -16,13 +16,6 @@ export default function SocialNav({ isOpen, menuNav }) {
         facebook
         <Fb />
       </a>
-      {/* <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.instagram.com/somos.antitesis/"
-      >twitter
-        <Tw />
-      </a> */}
       <a
         target="_blank"
         rel="noopener noreferrer"
@@ -69,10 +62,11 @@ const Social = styled.div`
     height: 28px;
     margin-right: 8px;
     * {
-      fill: ${props =>
+      /* fill: ${props =>
         props.isOpen
           ? props.theme.colors.background
-          : props.theme.colors.foreground};
+          : props.theme.colors.foreground}; */
+          fill: ${props => props.theme.colors.foreground};
       transition: fill 300ms ease-out;
     }
     .plasta {
