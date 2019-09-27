@@ -10,6 +10,5 @@
     },
     { "handle": "filesystem" },
     { "src": "/robots.txt", "dest": "/static/robots.txt" }
-  ],
-  "builds": [{ "src": "**/*.js", "use": "@now/static" }]
+  ]
 }
