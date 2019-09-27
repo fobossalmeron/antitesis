@@ -64,6 +64,10 @@ export default class MyApp extends App {
     Router.events.on("routeChangeStart", this.handleRouteStart);
     Router.events.on("routeChangeComplete", this.handleRouteComplete);
     Router.events.on("routeChangeError", this.handleRouteError);
+
+    if (window.innerWidth < 1200) {
+      this.changeTheme();
+    }
   }
 
   componentWillUnmount() {
