@@ -2,6 +2,7 @@ import Slide from "react-reveal/Slide";
 import GridWrapper from "components/GridWrapper";
 import HeadSEO from "components/HeadSEO";
 import { logEvent } from "utils/analytics";
+import styled from "styled-components";
 
 export default function Renta() {
   const logDownload = () => {
@@ -25,12 +26,25 @@ export default function Renta() {
           Contamos con equipo de cámara y de producción a disposición para tus
           proyectos.
         </p>
-        <h4 onClick={logDownload}>
+        <H4Styled onClick={logDownload}>
           <a target="_blank" href="../static/assets/pdf/Antitesis_renta.pdf">
             Ver PDF
           </a>
-        </h4>
+        </H4Styled>
       </Slide>
     </GridWrapper>
   );
 }
+
+const H4Styled = styled.h4`
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  @media (max-width: 800px) {
+    font-size: 1.1rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 0.9rem;
+  }
+`;

@@ -93,14 +93,26 @@ const UlStyled = styled.ul`
     margin: 0;
     padding: 0;
   }
+  @media (max-width: 800px) {
+    font-size: 1.1rem;
+  }
   @media (max-width: 700px) {
     column-count: 1;
+  }
+  @media (max-width: 400px) {
+    font-size: 0.9rem;
   }
 `;
 
 const H4Styled = styled.span`
   font-size: 1.32rem;
   letter-spacing: 1px;
+  @media (max-width: 800px) {
+    font-size: 1.1rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const Hero = styled.div`

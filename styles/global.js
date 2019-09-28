@@ -109,7 +109,12 @@ let theStyles = `
   h4 {
     font-size: 1.32rem;
     letter-spacing: 1px;
-    // overflow:hidden;
+  }
+  @media screen and (max-width: 800px) {
+    h4{    font-size: 1.1rem;    };
+  }
+  @media screen and (max-width: 400px) {
+    h4{    font-size: 0.9rem;    };
   }
 
   /* normalize */
