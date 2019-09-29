@@ -8,7 +8,7 @@
       "headers": { "Location": "/$1" },
       "continue": true
     },
-    { "handle": "filesystem" },
-    { "src": "/robots.txt", "dest": "/static/robots.txt" }
+    { "src": "/robots.txt", "dest": "/static/robots.txt" },
+    { "handle": "filesystem" }
   ]
 }
