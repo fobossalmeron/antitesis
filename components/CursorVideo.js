@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import { useEffect, useState, useRef } from "react";
 import { proyects } from "../portafolio/proyects.json";
-// import { TweenLite } from "gsap";
 import TweenLite from "gsap";
 import {
   setState,
