@@ -30,7 +30,7 @@ const Post = ({ proyect, query }) => {
       ""
     );
 
-  var otherProyects = Object.entries(proyects).map(function(_proyect, index) {
+  var otherProyects = Object.entries(proyects).map(function (_proyect, index) {
     var currentProyect = _proyect[1];
     var currentProyectId = _proyect[0];
 
@@ -43,14 +43,20 @@ const Post = ({ proyect, query }) => {
       return (
         <Fade key={"proyect" + index}>
           <Link href={`/[id]`} as={`/${currentProyectId}`}>
-            <figure
-              style={{
-                backgroundImage:
-                  `url(../static/assets/img/stills/` +
-                  currentProyect.still +
-                  `)`
-              }}
-            />
+            <OtrosProyectosItem>
+              <span>
+                {currentProyect.title == "Antítesis" ? "Showreel 2019" : currentProyect.title}
+                {currentProyect.title2 && currentProyect.title2 != "Films" ? " " + currentProyect.title2 : null}
+              </span>
+              <figure
+                style={{
+                  backgroundImage:
+                    `url(../static/assets/img/stills/` +
+                    currentProyect.still +
+                    `)`,
+                }}
+              />
+            </OtrosProyectosItem>
           </Link>
         </Fade>
       );
@@ -146,11 +152,22 @@ const PlayerContainer = styled.div`
   grid-column: 4 / span 6;
 `;
 
-const OtrosProyectos = styled.div`
-  grid-column: 4 / span 6;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+const OtrosProyectosItem = styled.div`
+  position: relative;
+  span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 0 10px;
+    pointer-events: none;
+    transition: all 0.6s ease;
+    opacity: 0;
+    color: #ffffff;
+  }
   figure {
     background-size: 100%;
     background-position: center center;
@@ -161,9 +178,28 @@ const OtrosProyectos = styled.div`
     opacity: 0.8;
     cursor: pointer;
     transition: all 0.3s ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
-      background-size: 105%;
-      opacity: 1;
+      figure {
+        background-size: 105%;
+        opacity: 1;
+      }
+      span {
+        opacity: 1;
+      }
     }
   }
+  @media (max-width: 700px) {
+    span {
+      font-size: 0.8rem;
+    }
+  }
+`;
+
+const OtrosProyectos = styled.div`
+  grid-column: 4 / span 6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 `;
