@@ -22,7 +22,6 @@
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^9.3.4",
     "babel-plugin-styled-components": "^1.10.7"
   },
   "engines": {
