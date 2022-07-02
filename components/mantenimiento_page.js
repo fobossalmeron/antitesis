@@ -29,7 +29,7 @@ export default function Landing() {
             ig
           </a>
         </Social>
-        <Date>© MMXIX</Date>
+        <Date>© MMXXII</Date>
         <StylesX />
       </Wrapper>
     </>

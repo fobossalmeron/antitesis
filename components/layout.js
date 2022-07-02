@@ -57,7 +57,7 @@ export default ({ children, title = "Antitesis", changeTheme, visible }) => {
 
         <Footer isOpen={isOpen}>
           <SocialNav isOpen={isOpen} />
-          <Date>© MMXIX</Date>
+          <Date>© MMXXII</Date>
         </Footer>
       </PageWrapper>
     </>
